@@ -1,0 +1,2220 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Logo Master — Professional Logo Design</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --gold:#C9A84C;--gold-light:#E8CC7A;--gold-dark:#8B6914;
+  --black:#0A0A0A;--dark:#111111;--dark2:#1A1A1A;--dark3:#252525;
+  --white:#F5F0E8;--muted:#888;
+  --red:#E05555;--green:#55C788;--blue:#5599E0;--purple:#9B6FE0;
+  --font-display:'Bebas Neue',sans-serif;--font-body:'Manrope',sans-serif;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:var(--font-body);overflow-x:hidden;}
+
+/* ── APP MODES ── */
+#landing-page{display:block;}
+#drawing-app{display:none;}
+#landing-page.hidden{display:none;}
+#drawing-app.visible{display:flex;flex-direction:column;height:100vh;}
+
+/* ── LANDING NAV ── */
+.landing-nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:20px 60px;
+  background:rgba(10,10,10,0.85);backdrop-filter:blur(12px);
+  border-bottom:0.5px solid rgba(201,168,76,0.15);
+}
+.nav-logo{font-family:var(--font-display);font-size:28px;letter-spacing:3px;color:var(--gold);}
+.nav-logo span{color:var(--white);}
+.nav-links{display:flex;gap:36px;list-style:none;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:13px;font-weight:500;letter-spacing:1px;text-transform:uppercase;transition:color .2s;}
+.nav-links a:hover{color:var(--gold);}
+.nav-cta{
+  background:var(--gold);color:var(--black);padding:10px 24px;border-radius:2px;
+  font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+  text-decoration:none;cursor:pointer;border:none;transition:background .2s,transform .1s;
+}
+.nav-cta:hover{background:var(--gold-light);transform:translateY(-1px);}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  flex-direction:column;text-align:center;position:relative;padding:120px 40px 80px;overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 50% at 50% 0%,rgba(201,168,76,0.12) 0%,transparent 60%),
+  radial-gradient(ellipse 40% 40% at 80% 80%,rgba(201,168,76,0.05) 0%,transparent 50%);
+}
+.hero-grid{
+  position:absolute;inset:0;
+  background-image:linear-gradient(rgba(201,168,76,0.04) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(201,168,76,0.04) 1px,transparent 1px);
+  background-size:60px 60px;
+  mask-image:radial-gradient(ellipse 80% 60% at 50% 40%,black 30%,transparent 80%);
+}
+.hero-eyebrow{
+  font-size:11px;font-weight:600;letter-spacing:4px;text-transform:uppercase;
+  color:var(--gold);margin-bottom:20px;position:relative;display:flex;align-items:center;gap:12px;
+}
+.hero-eyebrow::before,.hero-eyebrow::after{content:'';width:40px;height:1px;background:var(--gold);opacity:.5;}
+.hero-title{font-family:var(--font-display);font-size:clamp(72px,12vw,160px);line-height:.92;letter-spacing:4px;position:relative;z-index:1;}
+.hero-title .line1{color:var(--white);display:block;}
+.hero-title .line2{color:transparent;-webkit-text-stroke:1.5px var(--gold);display:block;}
+.hero-sub{font-size:16px;font-weight:300;color:var(--muted);max-width:480px;line-height:1.7;margin:28px auto 44px;position:relative;z-index:1;}
+.hero-buttons{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;position:relative;z-index:1;}
+.btn-primary{
+  background:var(--gold);color:var(--black);padding:16px 40px;font-size:13px;font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;border:none;border-radius:2px;cursor:pointer;
+  text-decoration:none;transition:background .2s,transform .15s;
+}
+.btn-primary:hover{background:var(--gold-light);transform:translateY(-2px);}
+.btn-outline{
+  background:transparent;color:var(--white);padding:16px 40px;font-size:13px;font-weight:600;
+  letter-spacing:2px;text-transform:uppercase;border:1px solid rgba(255,255,255,.2);border-radius:2px;
+  cursor:pointer;text-decoration:none;transition:border-color .2s,color .2s,transform .15s;
+}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px);}
+.hero-stats{display:flex;gap:60px;justify-content:center;margin-top:80px;position:relative;z-index:1;padding-top:40px;border-top:0.5px solid rgba(255,255,255,0.08);}
+.stat{text-align:center;}
+.stat-num{font-family:var(--font-display);font-size:42px;color:var(--gold);letter-spacing:2px;display:block;}
+.stat-label{font-size:11px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;}
+
+/* ── MARQUEE ── */
+.marquee-wrap{background:var(--gold);overflow:hidden;padding:14px 0;}
+.marquee-track{display:flex;gap:0;animation:marquee 18s linear infinite;white-space:nowrap;}
+.marquee-item{font-family:var(--font-display);font-size:15px;letter-spacing:4px;color:var(--black);padding:0 48px;}
+.marquee-dot{padding:0;opacity:0.4;}
+@keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* ── LANDING SECTIONS ── */
+.landing-section{padding:100px 60px;}
+.section-label{font-size:11px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+.section-title{font-family:var(--font-display);font-size:clamp(40px,5vw,72px);line-height:1;letter-spacing:2px;color:var(--white);margin-bottom:20px;}
+.section-sub{font-size:15px;color:var(--muted);max-width:520px;line-height:1.7;}
+
+/* Services */
+.services{background:var(--dark);}
+.services-head{text-align:center;margin-bottom:64px;}
+.services-head .section-sub{margin:0 auto;}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.06);max-width:1100px;margin:0 auto;}
+.service-card{background:var(--dark);padding:44px 36px;transition:background .25s;cursor:default;position:relative;overflow:hidden;}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold);transform:scaleX(0);transition:transform .3s;}
+.service-card:hover{background:var(--dark2);}
+.service-card:hover::before{transform:scaleX(1);}
+.service-icon{width:48px;height:48px;border:1px solid rgba(201,168,76,0.3);border-radius:4px;display:flex;align-items:center;justify-content:center;margin-bottom:24px;font-size:22px;}
+.service-name{font-family:var(--font-display);font-size:26px;letter-spacing:1px;color:var(--white);margin-bottom:10px;}
+.service-desc{font-size:13px;color:var(--muted);line-height:1.65;}
+.service-price{margin-top:24px;font-size:22px;font-weight:700;color:var(--gold);}
+.service-price span{font-size:13px;font-weight:400;color:var(--muted);}
+
+/* Portfolio */
+.portfolio{background:var(--black);}
+.portfolio-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:48px;flex-wrap:wrap;gap:20px;max-width:1100px;margin:0 auto 48px;}
+.portfolio-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:2px;max-width:1100px;margin:0 auto;}
+.logo-card{
+  aspect-ratio:4/3;background:var(--dark2);display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:12px;position:relative;overflow:hidden;
+  cursor:pointer;transition:transform .3s;
+}
+.logo-card:hover{transform:scale(1.02);z-index:2;}
+.logo-card:hover .logo-overlay{opacity:1;}
+.logo-overlay{
+  position:absolute;inset:0;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.3);
+  opacity:0;transition:opacity .3s;display:flex;align-items:flex-end;padding:16px;
+}
+.logo-tag{font-size:11px;color:var(--gold);letter-spacing:2px;text-transform:uppercase;}
+.logo-card svg{width:80px;height:80px;}
+.logo-wordmark{font-family:var(--font-display);font-size:13px;letter-spacing:3px;color:rgba(255,255,255,0.5);text-transform:uppercase;}
+
+/* Process */
+.process{background:var(--dark);}
+.process-head{text-align:center;margin-bottom:64px;}
+.process-head .section-sub{margin:0 auto;}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0;max-width:1100px;margin:0 auto;position:relative;}
+.step{padding:40px 32px;border-left:1px solid rgba(255,255,255,0.06);position:relative;}
+.step:first-child{border-left:none;}
+.step-num{font-family:var(--font-display);font-size:72px;line-height:1;color:rgba(201,168,76,0.12);margin-bottom:16px;display:block;}
+.step-title{font-family:var(--font-display);font-size:22px;letter-spacing:1px;color:var(--white);margin-bottom:10px;}
+.step-desc{font-size:13px;color:var(--muted);line-height:1.65;}
+
+/* Testimonials */
+.testimonials{background:var(--black);}
+.t-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;max-width:1100px;margin:48px auto 0;}
+.t-card{background:var(--dark2);border:0.5px solid rgba(255,255,255,0.07);padding:36px;border-radius:4px;position:relative;}
+.t-quote{font-size:48px;line-height:1;color:var(--gold);opacity:.4;font-family:Georgia,serif;margin-bottom:16px;}
+.t-text{font-size:14px;color:rgba(245,240,232,0.75);line-height:1.75;margin-bottom:24px;}
+.t-author{display:flex;align-items:center;gap:12px;}
+.t-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--gold-dark),var(--gold));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;color:var(--black);}
+.t-name{font-size:13px;font-weight:600;color:var(--white);}
+.t-role{font-size:11px;color:var(--muted);}
+
+/* CTA */
+.cta-banner{background:var(--gold);padding:80px 60px;text-align:center;}
+.cta-banner .section-title{color:var(--black);}
+.cta-banner .section-sub{color:rgba(0,0,0,0.55);margin:0 auto 36px;}
+.btn-dark{
+  background:var(--black);color:var(--gold);padding:18px 48px;font-size:13px;font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;border:none;border-radius:2px;cursor:pointer;
+  text-decoration:none;transition:background .2s,transform .15s;
+}
+.btn-dark:hover{background:var(--dark2);transform:translateY(-2px);}
+
+/* Footer */
+.landing-footer{
+  background:var(--dark);padding:60px;border-top:0.5px solid rgba(255,255,255,0.06);
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;
+}
+.footer-logo{font-family:var(--font-display);font-size:32px;letter-spacing:4px;color:var(--gold);}
+.footer-logo span{color:var(--white);}
+.footer-links{display:flex;gap:32px;list-style:none;}
+.footer-links a{font-size:12px;color:var(--muted);text-decoration:none;letter-spacing:1px;text-transform:uppercase;transition:color .2s;}
+.footer-links a:hover{color:var(--gold);}
+.footer-copy{font-size:11px;color:rgba(136,136,136,0.5);}
+
+/* Fade-up */
+.fade-up{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease;}
+.fade-up.visible{opacity:1;transform:translateY(0);}
+
+/* ═══════════════════════════════════════ */
+/* ── DRAWING APP ── */
+/* ═══════════════════════════════════════ */
+.app-topbar{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 16px;height:52px;background:var(--black);
+  border-bottom:1px solid rgba(201,168,76,0.2);flex-shrink:0;gap:12px;
+}
+.app-main{display:flex;flex:1;overflow:hidden;}
+.app-left-panel{
+  width:220px;flex-shrink:0;background:var(--black);
+  border-right:1px solid rgba(255,255,255,0.07);
+  display:flex;flex-direction:column;overflow-y:auto;
+}
+.app-panel-section{padding:14px 14px 10px;}
+.app-panel-title{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+.app-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px;}
+.app-tool-btn{
+  background:var(--dark2);border:1px solid rgba(255,255,255,0.08);
+  color:var(--white);padding:8px 6px;border-radius:5px;font-size:11px;font-weight:600;cursor:pointer;
+  display:flex;flex-direction:column;align-items:center;gap:4px;transition:all .15s;
+}
+.app-tool-btn .icon{font-size:18px;line-height:1;}
+.app-tool-btn:hover{background:var(--dark3);border-color:rgba(201,168,76,0.3);}
+.app-tool-btn.active{background:rgba(201,168,76,0.15);border-color:var(--gold);color:var(--gold);}
+.app-color-row{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+.app-color-label{font-size:11px;color:var(--muted);min-width:40px;}
+.app-color-swatch{width:32px;height:32px;border-radius:4px;border:2px solid rgba(255,255,255,0.2);cursor:pointer;transition:transform .1s;}
+.app-color-swatch:hover{transform:scale(1.1);}
+input[type=color]{opacity:0;position:absolute;width:32px;height:32px;cursor:pointer;}
+.app-palette{display:flex;flex-wrap:wrap;gap:5px;}
+.app-pal-dot{width:24px;height:24px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:all .15s;}
+.app-pal-dot:hover{transform:scale(1.2);border-color:rgba(255,255,255,0.5);}
+.app-slider-wrap{margin-bottom:10px;}
+.app-slider-row-ui{display:flex;align-items:center;gap:8px;margin-bottom:4px;}
+.app-slider-name{font-size:11px;color:var(--muted);min-width:48px;}
+.app-slider-val{font-size:11px;color:var(--gold);min-width:28px;text-align:right;}
+input[type=range]{flex:1;-webkit-appearance:none;height:4px;background:var(--dark3);border-radius:2px;outline:none;}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;border-radius:50%;background:var(--gold);cursor:pointer;}
+.app-shape-gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;}
+.app-shape-item{
+  aspect-ratio:1;background:var(--dark2);border:1px solid rgba(255,255,255,0.08);
+  border-radius:4px;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:all .15s;padding:4px;
+}
+.app-shape-item:hover{border-color:var(--gold);background:rgba(201,168,76,0.1);}
+.app-shape-item canvas{width:100%;height:100%;}
+.app-divider{height:1px;background:rgba(255,255,255,0.06);margin:4px 0;}
+.app-text-input{
+  width:100%;background:var(--dark2);border:1px solid rgba(255,255,255,0.1);
+  color:var(--white);padding:7px 10px;border-radius:4px;font-size:13px;font-family:var(--font-body);outline:none;
+}
+.app-text-input:focus{border-color:var(--gold);}
+.app-font-select{
+  width:100%;background:var(--dark2);border:1px solid rgba(255,255,255,0.1);
+  color:var(--white);padding:6px 8px;border-radius:4px;font-size:12px;margin-top:6px;outline:none;cursor:pointer;
+}
+.app-font-select option{background:var(--dark);}
+.app-add-text-btn{
+  width:100%;margin-top:6px;background:rgba(201,168,76,0.15);border:1px solid var(--gold);
+  color:var(--gold);padding:7px;border-radius:4px;font-size:12px;font-weight:700;cursor:pointer;transition:background .15s;
+}
+.app-add-text-btn:hover{background:rgba(201,168,76,0.3);}
+.app-bg-btns{display:flex;gap:5px;flex-wrap:wrap;}
+.app-bg-btn{width:28px;height:28px;border-radius:4px;cursor:pointer;border:2px solid rgba(255,255,255,0.2);transition:all .15s;}
+.app-bg-btn:hover,.app-bg-btn.active{border-color:var(--gold);transform:scale(1.1);}
+
+/* Canvas area */
+.app-canvas-area{
+  flex:1;display:flex;align-items:center;justify-content:center;
+  background:repeating-conic-gradient(#1A1A1A 0% 25%,#161616 0% 50%) 0 0/24px 24px;
+  position:relative;overflow:hidden;
+}
+#drawCanvas{border:1px solid rgba(201,168,76,0.25);cursor:crosshair;box-shadow:0 0 60px rgba(0,0,0,0.8);display:block;}
+.app-canvas-size-label{position:absolute;bottom:12px;right:16px;font-size:11px;color:rgba(255,255,255,0.2);pointer-events:none;}
+
+/* Back button */
+.app-back-btn{
+  background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.4);
+  color:var(--gold);padding:6px 14px;border-radius:4px;font-size:12px;font-weight:600;
+  cursor:pointer;display:flex;align-items:center;gap:5px;transition:all .15s;white-space:nowrap;
+}
+.app-back-btn:hover{background:rgba(201,168,76,0.3);}
+
+/* Top tool buttons */
+.app-tbtn{
+  background:var(--dark2);border:1px solid rgba(255,255,255,0.1);
+  color:var(--white);padding:6px 12px;border-radius:4px;font-size:12px;font-weight:600;
+  cursor:pointer;display:flex;align-items:center;gap:5px;transition:all .15s;white-space:nowrap;
+}
+.app-tbtn:hover{background:var(--dark3);border-color:rgba(201,168,76,0.4);}
+.app-tbtn-gold{background:var(--gold);color:var(--black);border:none;font-weight:700;}
+.app-tbtn-gold:hover{background:var(--gold-light);}
+.app-tbtn-red{background:rgba(224,85,85,0.15);border-color:var(--red);color:var(--red);}
+.app-tbtn-red:hover{background:rgba(224,85,85,0.3);}
+
+/* Right panel */
+.app-right-panel{
+  width:180px;flex-shrink:0;background:var(--black);
+  border-left:1px solid rgba(255,255,255,0.07);
+  display:flex;flex-direction:column;overflow-y:auto;
+}
+.app-layer-item{
+  display:flex;align-items:center;gap:8px;padding:8px 12px;
+  border-bottom:1px solid rgba(255,255,255,0.05);cursor:pointer;font-size:12px;color:var(--muted);transition:background .1s;
+}
+.app-layer-item:hover{background:var(--dark2);}
+.app-layer-item.active{background:rgba(201,168,76,0.1);color:var(--white);}
+.app-layer-del{margin-left:auto;font-size:11px;color:var(--red);opacity:0;transition:opacity .15s;cursor:pointer;padding:2px 4px;}
+.app-layer-item:hover .app-layer-del{opacity:1;}
+
+/* Responsive */
+@media(max-width:700px){.app-left-panel{width:160px;}.app-right-panel{display:none;}.landing-nav{padding:16px 24px;}.nav-links{display:none;}.landing-section{padding:60px 24px;}}
+@media(max-width:500px){.app-left-panel{display:none;}.hero-stats{gap:24px;flex-wrap:wrap;}.cta-banner{padding:60px 24px;}}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- LANDING PAGE -->
+<!-- ═══════════════════════════════════════ -->
+<div id="landing-page">
+
+  <nav class="landing-nav">
+    <div class="nav-logo">LOGO<span>MASTER</span></div>
+    <ul class="nav-links">
+      <li><a href="#services">Xizmatlar</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#process">Jarayon</a></li>
+      <li><a href="#reviews">Sharhlar</a></li>
+    </ul>
+    <button class="nav-cta" onclick="showDrawingApp()">🎨 Logo chizish</button>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-eyebrow">Professional Logotip Dizayni</div>
+    <h1 class="hero-title">
+      <span class="line1">LOGO</span>
+      <span class="line2">MASTER</span>
+    </h1>
+    <p class="hero-sub">Brendingiz uchun zamonaviy, professional va unutilmas logotiplar yaratamiz. Sizning g'oyangiz — bizning san'atimiz.</p>
+    <div class="hero-buttons">
+      <a href="#services" class="btn-primary">Xizmatlarni ko'rish</a>
+      <button class="btn-outline" onclick="showDrawingApp()">🎨 Logo chizish</button>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num">500+</span><span class="stat-label">Yaratilgan logo</span></div>
+      <div class="stat"><span class="stat-num">8+</span><span class="stat-label">Yillik tajriba</span></div>
+      <div class="stat"><span class="stat-num">98%</span><span class="stat-label">Mijoz mamnunligi</span></div>
+      <div class="stat"><span class="stat-num">50+</span><span class="stat-label">Soha</span></div>
+    </div>
+  </section>
+
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <span class="marquee-item">BRENDING</span><span class="marquee-item marquee-dot">✦</span>
+      <span class="marquee-item">LOGOTIP DIZAYN</span><span class="marquee-item marquee-dot">✦</span>
+      <span class="marquee-item">KORPORATIV IDENTIFIKATSIYA</span><span class="marquee-item marquee-dot">✦</span>
+      <span class="marquee-item">VEKTORAL GRAFIKA</span><span class="marquee-item marquee-dot">✦</span>
+      <span class="marquee-item">BRENDBOOK</span><span class="marquee-item marquee-dot">✦</span>
+      <span class="marquee-item">BRENDING</span><span class="marquee-item marquee-dot">✦</span>
+      <span class="marquee-item">LOGOTIP DIZAYN</span><span class="marquee-item marquee-dot">✦</span>
+      <span class="marquee-item">KORPORATIV IDENTIFIKATSIYA</span><span class="marquee-item marquee-dot">✦</span>
+      <span class="marquee-item">VEKTORAL GRAFIKA</span><span class="marquee-item marquee-dot">✦</span>
+      <span class="marquee-item">BRENDBOOK</span><span class="marquee-item marquee-dot">✦</span>
+    </div>
+  </div>
+
+  <section class="landing-section services" id="services">
+    <div class="services-head fade-up">
+      <div class="section-label">Xizmatlarimiz</div>
+      <h2 class="section-title">Nima taklif qilamiz</h2>
+      <p class="section-sub">Har bir xizmatimiz sizning brendingizni raqobatchilardan ajratib turishga mo'ljallangan.</p>
+    </div>
+    <div class="services-grid fade-up">
+      <div class="service-card">
+        <div class="service-icon">◈</div>
+        <div class="service-name">Minimal Logo</div>
+        <p class="service-desc">Zamonaviy va sof dizayn. Kichik korxonalar va individual brendlar uchun ideal tanlov.</p>
+        <div class="service-price">$99 <span>dan boshlab</span></div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">⬡</div>
+        <div class="service-name">Korporativ Logo</div>
+        <p class="service-desc">Professional kompaniyalar uchun to'liq korporativ uslub va logotip paketi.</p>
+        <div class="service-price">$249 <span>dan boshlab</span></div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">◉</div>
+        <div class="service-name">Premium Brend</div>
+        <p class="service-desc">To'liq brendbook: logotip, ranglar, shriftlar, vizitka, letterhead va barcha brandinglar.</p>
+        <div class="service-price">$499 <span>dan boshlab</span></div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">✦</div>
+        <div class="service-name">Qayta Dizayn</div>
+        <p class="service-desc">Mavjud logotipingizni yangilang va zamonaviy ko'rinish bering, biroq identifikatsiyani saqlang.</p>
+        <div class="service-price">$149 <span>dan boshlab</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="landing-section portfolio" id="portfolio">
+    <div class="portfolio-head fade-up">
+      <div>
+        <div class="section-label">Ishlarimiz</div>
+        <h2 class="section-title">Portfolio</h2>
+      </div>
+      <p style="font-size:14px;color:var(--muted);max-width:300px;line-height:1.65;">Turli sohalardagi mijozlarimiz uchun yaratilgan logotiplar.</p>
+    </div>
+    <div class="portfolio-grid fade-up">
+      <div class="logo-card">
+        <svg viewBox="0 0 80 80" fill="none"><polygon points="40,8 72,62 8,62" stroke="#C9A84C" stroke-width="2" fill="none"/><polygon points="40,20 62,56 18,56" fill="rgba(201,168,76,0.15)"/><circle cx="40" cy="40" r="8" fill="#C9A84C"/></svg>
+        <span class="logo-wordmark">APEX</span>
+        <div class="logo-overlay"><span class="logo-tag">IT Kompaniya</span></div>
+      </div>
+      <div class="logo-card" style="background:#0D1117;">
+        <svg viewBox="0 0 80 80" fill="none"><rect x="15" y="15" width="22" height="22" fill="#C9A84C"/><rect x="43" y="15" width="22" height="22" fill="none" stroke="#C9A84C" stroke-width="1.5"/><rect x="15" y="43" width="22" height="22" fill="none" stroke="#C9A84C" stroke-width="1.5"/><rect x="43" y="43" width="22" height="22" fill="rgba(201,168,76,0.3)"/></svg>
+        <span class="logo-wordmark">GRID CO</span>
+        <div class="logo-overlay"><span class="logo-tag">Arxitektura</span></div>
+      </div>
+      <div class="logo-card" style="background:#0A0F1E;">
+        <svg viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="28" stroke="#C9A84C" stroke-width="1.5" stroke-dasharray="4 3"/><circle cx="40" cy="40" r="16" fill="none" stroke="#C9A84C" stroke-width="2"/><circle cx="40" cy="40" r="5" fill="#C9A84C"/><line x1="40" y1="12" x2="40" y2="24" stroke="#C9A84C" stroke-width="1.5"/><line x1="40" y1="56" x2="40" y2="68" stroke="#C9A84C" stroke-width="1.5"/></svg>
+        <span class="logo-wordmark">ORBIT</span>
+        <div class="logo-overlay"><span class="logo-tag">Texnologiya</span></div>
+      </div>
+      <div class="logo-card" style="background:#0F0D0A;">
+        <svg viewBox="0 0 80 80" fill="none"><path d="M20 60 L40 15 L60 60" stroke="#C9A84C" stroke-width="2.5" stroke-linejoin="round"/><path d="M27 45 L53 45" stroke="#C9A84C" stroke-width="1.5"/><circle cx="40" cy="15" r="4" fill="#C9A84C"/></svg>
+        <span class="logo-wordmark">ALTURA</span>
+        <div class="logo-overlay"><span class="logo-tag">Restoran</span></div>
+      </div>
+      <div class="logo-card" style="background:#100A14;">
+        <svg viewBox="0 0 80 80" fill="none"><path d="M40 12 C40 12 18 28 18 46 C18 57 28 66 40 66 C52 66 62 57 62 46 C62 28 40 12 40 12Z" stroke="#C9A84C" stroke-width="1.5" fill="rgba(201,168,76,0.08)"/><path d="M40 26 C40 26 28 36 28 46 C28 52 33 57 40 57 C47 57 52 52 52 46 C52 36 40 26 40 26Z" fill="rgba(201,168,76,0.2)"/><circle cx="40" cy="46" r="6" fill="#C9A84C"/></svg>
+        <span class="logo-wordmark">DROPZ</span>
+        <div class="logo-overlay"><span class="logo-tag">Suv brendlari</span></div>
+      </div>
+      <div class="logo-card" style="background:#0A100A;">
+        <svg viewBox="0 0 80 80" fill="none"><rect x="12" y="30" width="56" height="34" rx="4" stroke="#C9A84C" stroke-width="1.5" fill="none"/><path d="M26 30 L26 22 C26 18 30 14 40 14 C50 14 54 18 54 22 L54 30" stroke="#C9A84C" stroke-width="1.5"/><circle cx="40" cy="47" r="6" fill="#C9A84C"/><line x1="40" y1="53" x2="40" y2="58" stroke="#C9A84C" stroke-width="1.5"/></svg>
+        <span class="logo-wordmark">VAULTX</span>
+        <div class="logo-overlay"><span class="logo-tag">Moliya</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="landing-section process" id="process">
+    <div class="process-head fade-up">
+      <div class="section-label">Ish jarayoni</div>
+      <h2 class="section-title">Qanday ishlashimiz</h2>
+      <p class="section-sub">Oddiy, tezkor va shaffof ish jarayoni — natija doim belgilangan muddatda.</p>
+    </div>
+    <div class="steps fade-up">
+      <div class="step"><span class="step-num">01</span><div class="step-title">Muloqot</div><p class="step-desc">Sizning biznesingiz, maqsadlaringiz va raqobatchilaringiz haqida batafsil suhbat o'tkazamiz.</p></div>
+      <div class="step"><span class="step-num">02</span><div class="step-title">Kontseptsiya</div><p class="step-desc">3 xil yo'nalishda eskizlar yaratib, sizga taqdim qilamiz. Eng yoqqanini tanlaysiz.</p></div>
+      <div class="step"><span class="step-num">03</span><div class="step-title">Dizayn</div><p class="step-desc">Tanlangan kontseptsiyani raqamli formatda professional darajada yakunlaymiz.</p></div>
+      <div class="step"><span class="step-num">04</span><div class="step-title">Topshirish</div><p class="step-desc">Barcha formatda (AI, SVG, PNG, PDF) fayllari va brandbook bilan birga topshiramiz.</p></div>
+    </div>
+  </section>
+
+  <section class="landing-section testimonials" id="reviews">
+    <div class="fade-up" style="text-align:center;">
+      <div class="section-label">Mijozlar fikri</div>
+      <h2 class="section-title">Ular nima dedi</h2>
+    </div>
+    <div class="t-grid fade-up">
+      <div class="t-card">
+        <div class="t-quote">"</div>
+        <p class="t-text">Logo Master jamoasi biz kutgandan ham yaxshi narsani yaratdi. Bizning brendimiz endi chindan ham professional ko'rinadi.</p>
+        <div class="t-author"><div class="t-avatar">AK</div><div><div class="t-name">Alisher Karimov</div><div class="t-role">TechStart.uz — CEO</div></div></div>
+      </div>
+      <div class="t-card">
+        <div class="t-quote">"</div>
+        <p class="t-text">3 kun ichida 3 ta kontseptsiya, 2 ta o'zgartirishdan keyin mukammal logotip tayyorlandi. Tez va sifatli ish uchun katta rahmat!</p>
+        <div class="t-author"><div class="t-avatar">SM</div><div><div class="t-name">Sarvinoy Mirzayeva</div><div class="t-role">Cafe Gusto — Owner</div></div></div>
+      </div>
+      <div class="t-card">
+        <div class="t-quote">"</div>
+        <p class="t-text">Narxi ham qulay, sifati ham ajoyib. Bizning kompaniyamiz uchun to'liq brendbook tayyorlab berishdi.</p>
+        <div class="t-author"><div class="t-avatar">BT</div><div><div class="t-name">Bobur Toshmatov</div><div class="t-role">BuildPro — Marketing Dir.</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-banner fade-up" id="contact">
+    <div class="section-label" style="color:rgba(0,0,0,0.45);">Hoziroq boshlang</div>
+    <h2 class="section-title">Brendingizni Yarating</h2>
+    <p class="section-sub">Logotipingizga muhtojmisiz? Biz bilan bog'laning — birinchi maslahat bepul!</p>
+    <button class="btn-dark" onclick="showDrawingApp()">🎨 Logo chizish</button>
+  </div>
+
+  <footer class="landing-footer">
+    <div class="footer-logo">LOGO<span>MASTER</span></div>
+    <ul class="footer-links">
+      <li><a href="#services">Xizmatlar</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#process">Jarayon</a></li>
+      <li><a href="#reviews">Sharhlar</a></li>
+    </ul>
+    <div class="footer-copy">© 2025 LogoMaster. Barcha huquqlar himoyalangan.</div>
+  </footer>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- DRAWING APP -->
+<!-- ═══════════════════════════════════════ -->
+<div id="drawing-app">
+
+  <div class="app-topbar">
+    <button class="app-back-btn" onclick="showLanding()">← Orqaga</button>
+    <div class="logo-name" style="font-family:var(--font-display);font-size:22px;letter-spacing:3px;color:var(--gold);white-space:nowrap;">LOGO<span style="color:var(--white);">MASTER</span></div>
+    <div style="display:flex;align-items:center;gap:6px;flex:1;justify-content:center;flex-wrap:wrap;">
+      <button class="app-tbtn" onclick="appUndo()">↩ Orqaga</button>
+      <button class="app-tbtn" onclick="appRedo()">↪ Qayta</button>
+      <button class="app-tbtn" onclick="appClear()">🗑 Tozalash</button>
+      <button class="app-tbtn" id="appGridBtn" onclick="appToggleGrid()">⊞ Grid</button>
+      <button class="app-tbtn" onclick="appZoomIn()">＋</button>
+      <button class="app-tbtn" onclick="appZoomOut()">－</button>
+    </div>
+    <div style="display:flex;gap:6px;align-items:center;">
+      <button class="app-tbtn app-tbtn-red" onclick="appClear()">Yangi</button>
+      <button class="app-tbtn app-tbtn-gold" onclick="appDownloadPNG()">⬇ PNG</button>
+      <button class="app-tbtn app-tbtn-gold" onclick="appDownloadSVG()">⬇ SVG</button>
+    </div>
+  </div>
+
+  <div class="app-main">
+    <div class="app-left-panel">
+      <div class="app-panel-section">
+        <div class="app-panel-title">Asboblar</div>
+        <div class="app-tool-grid">
+          <button class="app-tool-btn active" id="appToolPen" onclick="appSetTool('pen')"><span class="icon">✏️</span>Qalam</button>
+          <button class="app-tool-btn" id="appToolBrush" onclick="appSetTool('brush')"><span class="icon">🖌️</span>Mo'yqalam</button>
+          <button class="app-tool-btn" id="appToolLine" onclick="appSetTool('line')"><span class="icon">╱</span>Chiziq</button>
+          <button class="app-tool-btn" id="appToolRect" onclick="appSetTool('rect')"><span class="icon">▭</span>To'rtburchak</button>
+          <button class="app-tool-btn" id="appToolCircle" onclick="appSetTool('circle')"><span class="icon">○</span>Aylana</button>
+          <button class="app-tool-btn" id="appToolTriangle" onclick="appSetTool('triangle')"><span class="icon">△</span>Uchburchak</button>
+          <button class="app-tool-btn" id="appToolStar" onclick="appSetTool('star')"><span class="icon">★</span>Yulduz</button>
+          <button class="app-tool-btn" id="appToolEraser" onclick="appSetTool('eraser')"><span class="icon">⬜</span>O'chirg'ich</button>
+          <button class="app-tool-btn" id="appToolFill" onclick="appSetTool('fill')"><span class="icon">🪣</span>To'ldirish</button>
+          <button class="app-tool-btn" id="appToolSelect" onclick="appSetTool('select')"><span class="icon">↖️</span>Tanlash</button>
+        </div>
+      </div>
+      <div class="app-divider"></div>
+      <div class="app-panel-section">
+        <div class="app-panel-title">Rang</div>
+        <div class="app-color-row">
+          <span class="app-color-label">Chiziq</span>
+          <div style="position:relative;width:32px;height:32px;">
+            <div class="app-color-swatch" id="appStrokePrev" style="background:#C9A84C;"></div>
+            <input type="color" id="appStrokeColor" value="#C9A84C" onchange="appUpdateStroke(this.value)" style="position:absolute;top:0;left:0;">
+          </div>
+          <span style="font-size:11px;color:var(--muted)" id="appStrokeHex">#C9A84C</span>
+        </div>
+        <div class="app-color-row">
+          <span class="app-color-label">To'ldir</span>
+          <div style="position:relative;width:32px;height:32px;">
+            <div class="app-color-swatch" id="appFillPrev" style="background:transparent;border-style:dashed;"></div>
+            <input type="color" id="appFillColor" value="#C9A84C" onchange="appUpdateFill(this.value)" style="position:absolute;top:0;left:0;">
+          </div>
+          <label style="display:flex;align-items:center;gap:4px;font-size:11px;color:var(--muted);cursor:pointer;">
+            <input type="checkbox" id="appFillToggle" onchange="appToggleFill()" style="accent-color:var(--gold);"> To'ldir
+          </label>
+        </div>
+        <div class="app-palette" id="appPalette"></div>
+      </div>
+      <div class="app-divider"></div>
+      <div class="app-panel-section">
+        <div class="app-panel-title">O'lcham</div>
+        <div class="app-slider-wrap">
+          <div class="app-slider-row-ui">
+            <span class="app-slider-name">Qalinlik</span>
+            <input type="range" id="appSizeSlider" min="1" max="60" value="3" oninput="appUpdateSize(this.value)">
+            <span class="app-slider-val" id="appSizeVal">3px</span>
+          </div>
+          <div class="app-slider-row-ui">
+            <span class="app-slider-name">Shaffof.</span>
+            <input type="range" id="appOpacitySlider" min="5" max="100" value="100" oninput="appUpdateOpacity(this.value)">
+            <span class="app-slider-val" id="appOpacityVal">100%</span>
+          </div>
+        </div>
+      </div>
+      <div class="app-divider"></div>
+      <div class="app-panel-section">
+        <div class="app-panel-title">Tayyor shakllar</div>
+        <div class="app-shape-gallery" id="appShapeGallery"></div>
+      </div>
+      <div class="app-divider"></div>
+      <div class="app-panel-section">
+        <div class="app-panel-title">Matn / Logo nomi</div>
+        <input type="text" class="app-text-input" id="appTextInput" placeholder="Logo Master..." value="LOGO MASTER">
+        <select class="app-font-select" id="appFontSelect">
+          <option value="'Bebas Neue', sans-serif">Bebas Neue (Katta)</option>
+          <option value="'Manrope', sans-serif">Manrope (Zamonaviy)</option>
+          <option value="Georgia, serif">Georgia (Klassik)</option>
+          <option value="'Courier New', monospace">Courier New (Texnik)</option>
+          <option value="Impact, sans-serif">Impact (Qo'pol)</option>
+          <option value="'Times New Roman', serif">Times New Roman</option>
+        </select>
+        <button class="app-add-text-btn" onclick="appAddText()">＋ Matn qo'shish</button>
+      </div>
+      <div class="app-divider"></div>
+      <div class="app-panel-section">
+        <div class="app-panel-title">Fon rangi</div>
+        <div class="app-bg-btns" id="appBgBtns"></div>
+      </div>
+    </div>
+
+    <div class="app-canvas-area" id="appCanvasArea">
+      <canvas id="drawCanvas" width="600" height="600"></canvas>
+      <div class="app-canvas-size-label" id="appSizeLabel">600 × 600</div>
+    </div>
+
+    <div class="app-right-panel">
+      <div class="app-panel-section" style="border-bottom:1px solid rgba(255,255,255,0.07);padding-bottom:14px;">
+        <div class="app-panel-title">Qatlamlar</div>
+      </div>
+      <div id="appLayersList"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── MODE SWITCHING ──
+function showDrawingApp(){
+  document.getElementById('landing-page').classList.add('hidden');
+  document.getElementById('drawing-app').classList.add('visible');
+  document.body.style.overflow='hidden';
+  if(!appInitialized){appInit();appInitialized=true;}
+}
+function showLanding(){
+  document.getElementById('landing-page').classList.remove('hidden');
+  document.getElementById('drawing-app').classList.remove('visible');
+  document.body.style.overflow='';
+}
+
+// ── LANDING ANIMATIONS ──
+(function(){
+  var obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});
+  },{threshold:0.12});
+  document.querySelectorAll('.fade-up').forEach(function(el){obs.observe(el);});
+})();
+
+// ═══════════════════════════════════════
+// DRAWING APP STATE
+// ═══════════════════════════════════════
+var appInitialized=false;
+var drawCanvas, drawCtx;
+var appTool='pen';
+var appDrawing=false;
+var appStartX=0,appStartY=0,appLastX=0,appLastY=0;
+var appStrokeColor='#C9A84C';
+var appFillEnabled=false;
+var appFillColor='#C9A84C';
+var appLineSize=3;
+var appOpacity=1;
+var appShowGrid=false;
+var appCurrentBg='#0A0A0A';
+var appZoom=1;
+var appLayers=[];
+var appUndoStack=[];
+var appRedoStack=[];
+var appSnapshot;
+
+var APP_COLORS=[
+  '#C9A84C','#E8CC7A','#FFFFFF','#F5F0E8','#AAAAAA','#555555','#111111',
+  '#E05555','#E07755','#E0C055','#55C788','#55B5E0','#5599E0','#9B6FE0','#E055C7'
+];
+var APP_BG_COLORS=[
+  {c:'#0A0A0A',label:'Qora'},{c:'#FFFFFF',label:'Oq'},{c:'#1A1A2E',label:'Qo\'ng\'ir'},
+  {c:'#0D1117',label:'Tun'},{c:'#1B1B2F',label:'To\'q'},{c:'transparent',label:'Shaffof',pattern:true}
+];
+var APP_SHAPES=[
+  {name:'Aylana',draw:function(x,y,s){drawAppCircleShape(x,y,s);}},
+  {name:'Kvadrat',draw:function(x,y,s){drawAppRectShape(x,y,s);}},
+  {name:'Uchb.',draw:function(x,y,s){drawAppTriangleShape(x,y,s);}},
+  {name:'Yulduz',draw:function(x,y,s){drawAppStarShape(x,y,s,5);}},
+  {name:'Olmos',draw:function(x,y,s){drawAppDiamond(x,y,s);}},
+  {name:'Olti b.',draw:function(x,y,s){drawAppHexagon(x,y,s);}},
+  {name:'X',draw:function(x,y,s){drawAppX(x,y,s);}},
+  {name:'Strelka',draw:function(x,y,s){drawAppArrow(x,y,s);}}
+];
+
+function appInit(){
+  drawCanvas=document.getElementById('drawCanvas');
+  drawCtx=drawCanvas.getContext('2d');
+  appBuildPalette();
+  appBuildBgBtns();
+  appBuildShapeGallery();
+  appFillBg();
+  appSaveSnapshot();
+  appUpdateLayersList();
+  setTimeout(function(){
+    drawCtx.save();drawCtx.globalAlpha=0.07;
+    drawCtx.font="bold 64px 'Bebas Neue', sans-serif";drawCtx.fillStyle='#C9A84C';
+    drawCtx.textAlign='center';drawCtx.textBaseline='middle';
+    drawCtx.fillText('LOGO MASTER',drawCanvas.width/2,drawCanvas.height/2);
+    drawCtx.restore();
+  },200);
+}
+
+function appBuildPalette(){
+  var p=document.getElementById('appPalette');
+  APP_COLORS.forEach(function(c){
+    var d=document.createElement('div');d.className='app-pal-dot';d.style.background=c;d.title=c;
+    d.onclick=function(){appStrokeColor=c;appSyncStroke();};
+    p.appendChild(d);
+  });
+}
+function appBuildBgBtns(){
+  var wrap=document.getElementById('appBgBtns');
+  APP_BG_COLORS.forEach(function(b){
+    var d=document.createElement('div');d.className='app-bg-btn';
+    if(b.pattern){d.style.backgroundImage='repeating-conic-gradient(#999 0% 25%,#fff 0% 50%)';d.style.backgroundSize='8px 8px';}
+    else{d.style.background=b.c;}
+    d.style.border='2px solid rgba(255,255,255,0.2)';d.title=b.label;
+    d.onclick=function(){
+      appCurrentBg=b.c;appFillBg();
+      wrap.querySelectorAll('.app-bg-btn').forEach(function(x){x.classList.remove('active');});
+      d.classList.add('active');
+    };
+    wrap.appendChild(d);
+  });
+  wrap.children[0].classList.add('active');
+}
+function appBuildShapeGallery(){
+  var g=document.getElementById('appShapeGallery');
+  APP_SHAPES.forEach(function(sh){
+    var wrap=document.createElement('div');wrap.className='app-shape-item';wrap.title=sh.name;
+    var sc=document.createElement('canvas');sc.width=40;sc.height=40;
+    var sctx=sc.getContext('2d');
+    sctx.strokeStyle='#C9A84C';sctx.fillStyle='rgba(201,168,76,0.25)';sctx.lineWidth=1.5;
+    sh.draw.call({ctx:sctx},20,20,14);
+    wrap.appendChild(sc);
+    wrap.onclick=function(){appPlaceShape(sh);};
+    g.appendChild(wrap);
+  });
+}
+
+function appSyncStroke(){
+  document.getElementById('appStrokeColor').value=appStrokeColor;
+  document.getElementById('appStrokePrev').style.background=appStrokeColor;
+  document.getElementById('appStrokeHex').textContent=appStrokeColor;
+}
+function appUpdateStroke(v){appStrokeColor=v;document.getElementById('appStrokePrev').style.background=v;document.getElementById('appStrokeHex').textContent=v;}
+function appUpdateFill(v){appFillColor=v;if(appFillEnabled)document.getElementById('appFillPrev').style.background=v;}
+function appToggleFill(){
+  appFillEnabled=document.getElementById('appFillToggle').checked;
+  var fp=document.getElementById('appFillPrev');
+  if(appFillEnabled){fp.style.background=appFillColor;fp.style.borderStyle='solid';}
+  else{fp.style.background='transparent';fp.style.borderStyle='dashed';}
+}
+function appUpdateSize(v){appLineSize=parseInt(v);document.getElementById('appSizeVal').textContent=v+'px';}
+function appUpdateOpacity(v){appOpacity=parseInt(v)/100;document.getElementById('appOpacityVal').textContent=v+'%';}
+
+function appFillBg(){
+  if(appCurrentBg==='transparent'){drawCtx.clearRect(0,0,drawCanvas.width,drawCanvas.height);}
+  else{drawCtx.fillStyle=appCurrentBg;drawCtx.fillRect(0,0,drawCanvas.width,drawCanvas.height);}
+}
+
+function appSaveSnapshot(){
+  appUndoStack.push(drawCanvas.toDataURL());
+  if(appUndoStack.length>40)appUndoStack.shift();
+  appRedoStack=[];
+}
+function appUndo(){
+  if(appUndoStack.length<2)return;
+  appRedoStack.push(appUndoStack.pop());
+  var img=new Image();img.src=appUndoStack[appUndoStack.length-1];
+  img.onload=function(){drawCtx.clearRect(0,0,drawCanvas.width,drawCanvas.height);drawCtx.drawImage(img,0,0);};
+}
+function appRedo(){
+  if(!appRedoStack.length)return;
+  var state=appRedoStack.pop();appUndoStack.push(state);
+  var img=new Image();img.src=state;
+  img.onload=function(){drawCtx.clearRect(0,0,drawCanvas.width,drawCanvas.height);drawCtx.drawImage(img,0,0);};
+}
+function appClear(){
+  appLayers=[];drawCtx.clearRect(0,0,drawCanvas.width,drawCanvas.height);
+  appFillBg();appSaveSnapshot();appUpdateLayersList();
+}
+function appToggleGrid(){
+  appShowGrid=!appShowGrid;
+  if(appShowGrid)appDrawGridOverlay();else appFillBg();
+}
+function appDrawGridOverlay(){
+  drawCtx.save();drawCtx.strokeStyle='rgba(201,168,76,0.12)';drawCtx.lineWidth=0.5;
+  for(var x=0;x<drawCanvas.width;x+=30){drawCtx.beginPath();drawCtx.moveTo(x,0);drawCtx.lineTo(x,drawCanvas.height);drawCtx.stroke();}
+  for(var y=0;y<drawCanvas.height;y+=30){drawCtx.beginPath();drawCtx.moveTo(0,y);drawCtx.lineTo(drawCanvas.width,y);drawCtx.stroke();}
+  drawCtx.restore();
+}
+function appZoomIn(){appZoom=Math.min(appZoom+0.1,3);drawCanvas.style.transform='scale('+appZoom+')';}
+function appZoomOut(){appZoom=Math.max(appZoom-0.1,0.3);drawCanvas.style.transform='scale('+appZoom+')';}
+
+function appSetCtxStyle(){
+  drawCtx.strokeStyle=appStrokeColor;drawCtx.fillStyle=appFillEnabled?appFillColor:'transparent';
+  drawCtx.lineWidth=appLineSize;drawCtx.globalAlpha=appOpacity;drawCtx.lineCap='round';drawCtx.lineJoin='round';
+}
+
+function drawAppCircleShape(x,y,r){drawCtx.beginPath();drawCtx.arc(x,y,r,0,Math.PI*2);if(appFillEnabled)drawCtx.fill();drawCtx.stroke();}
+function drawAppRectShape(x,y,s){if(appFillEnabled)drawCtx.fillRect(x-s,y-s,s*2,s*2);drawCtx.strokeRect(x-s,y-s,s*2,s*2);}
+function drawAppTriangleShape(x,y,s){drawCtx.beginPath();drawCtx.moveTo(x,y-s);drawCtx.lineTo(x+s,y+s);drawCtx.lineTo(x-s,y+s);drawCtx.closePath();if(appFillEnabled)drawCtx.fill();drawCtx.stroke();}
+function drawAppStarShape(cx,cy,r,pts){
+  var ir=r*0.45;drawCtx.beginPath();
+  for(var i=0;i<pts*2;i++){var a=(i*Math.PI/pts)-Math.PI/2;var rad=i%2===0?r:ir;i===0?drawCtx.moveTo(cx+rad*Math.cos(a),cy+rad*Math.sin(a)):drawCtx.lineTo(cx+rad*Math.cos(a),cy+rad*Math.sin(a));}
+  drawCtx.closePath();if(appFillEnabled)drawCtx.fill();drawCtx.stroke();
+}
+function drawAppDiamond(x,y,s){drawCtx.beginPath();drawCtx.moveTo(x,y-s);drawCtx.lineTo(x+s,y);drawCtx.lineTo(x,y+s);drawCtx.lineTo(x-s,y);drawCtx.closePath();if(appFillEnabled)drawCtx.fill();drawCtx.stroke();}
+function drawAppHexagon(x,y,s){drawCtx.beginPath();for(var i=0;i<6;i++){var a=Math.PI/3*i-Math.PI/6;i===0?drawCtx.moveTo(x+s*Math.cos(a),y+s*Math.sin(a)):drawCtx.lineTo(x+s*Math.cos(a),y+s*Math.sin(a));}drawCtx.closePath();if(appFillEnabled)drawCtx.fill();drawCtx.stroke();}
+function drawAppX(x,y,s){drawCtx.beginPath();drawCtx.moveTo(x-s,y-s);drawCtx.lineTo(x+s,y+s);drawCtx.moveTo(x+s,y-s);drawCtx.lineTo(x-s,y+s);drawCtx.stroke();}
+function drawAppArrow(x,y,s){drawCtx.beginPath();drawCtx.moveTo(x-s,y);drawCtx.lineTo(x+s,y);drawCtx.lineTo(x+s-s*0.4,y-s*0.4);drawCtx.moveTo(x+s,y);drawCtx.lineTo(x+s-s*0.4,y+s*0.4);drawCtx.stroke();}
+
+function appPlaceShape(sh){
+  var cx=drawCanvas.width/2,cy=drawCanvas.height/2,s=40;
+  appSetCtxStyle();sh.draw(cx,cy,s);appAddLayer(sh.name);appSaveSnapshot();
+}
+
+function appAddText(){
+  var txt=document.getElementById('appTextInput').value||'LOGO';
+  var font=document.getElementById('appFontSelect').value;
+  var fs=Math.max(appLineSize*6,24);
+  drawCtx.save();appSetCtxStyle();
+  drawCtx.font=fs+'px '+font;drawCtx.textAlign='center';drawCtx.textBaseline='middle';
+  if(appFillEnabled){drawCtx.fillStyle=appFillColor;drawCtx.fillText(txt,drawCanvas.width/2,drawCanvas.height/2);}
+  else{drawCtx.fillStyle=appStrokeColor;drawCtx.fillText(txt,drawCanvas.width/2,drawCanvas.height/2);}
+  drawCtx.restore();appAddLayer('Matn: '+txt.slice(0,10));appSaveSnapshot();
+}
+
+function appAddLayer(name){appLayers.unshift({name:name,visible:true});appUpdateLayersList();}
+function appUpdateLayersList(){
+  var el=document.getElementById('appLayersList');el.innerHTML='';
+  if(!appLayers.length){el.innerHTML='<div style="padding:16px 12px;font-size:12px;color:var(--muted);text-align:center;">Hali qatlam yo\'q</div>';return;}
+  appLayers.forEach(function(l,i){
+    var d=document.createElement('div');d.className='app-layer-item'+(i===0?' active':'');
+    d.innerHTML='<span style="font-size:14px;">◼</span><span style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">'+l.name+'</span><span class="app-layer-del" onclick="appRemoveLayer('+i+')">✕</span>';
+    el.appendChild(d);
+  });
+}
+function appRemoveLayer(i){appLayers.splice(i,1);appUpdateLayersList();}
+
+function appDownloadPNG(){
+  var link=document.createElement('a');link.download='logo-master.png';link.href=drawCanvas.toDataURL('image/png');link.click();
+}
+function appDownloadSVG(){
+  var w=drawCanvas.width,h=drawCanvas.height;
+  var img=drawCanvas.toDataURL('image/png');
+  var svg='<svg xmlns="http://www.w3.org/2000/svg" width="'+w+'" height="'+h+'"><image href="'+img+'" width="'+w+'" height="'+h+'"/></svg>';
+  var blob=new Blob([svg],{type:'image/svg+xml'});
+  var url=URL.createObjectURL(blob);
+  var a=document.createElement('a');a.href=url;a.download='logo-master.svg';a.click();URL.revokeObjectURL(url);
+}
+
+function appSetTool(t){
+  appTool=t;
+  document.querySelectorAll('.app-tool-btn').forEach(function(b){b.classList.remove('active');});
+  var el=document.getElementById('appTool'+t.charAt(0).toUpperCase()+t.slice(1));
+  if(el)el.classList.add('active');
+  drawCanvas.style.cursor=t==='eraser'?'cell':t==='fill'?'crosshair':'crosshair';
+}
+
+function getAppPos(e){
+  var r=drawCanvas.getBoundingClientRect();
+  var scaleX=drawCanvas.width/r.width,scaleY=drawCanvas.height/r.height;
+  var cx=e.touches?e.touches[0].clientX:e.clientX;
+  var cy=e.touches?e.touches[0].clientY:e.clientY;
+  return{x:(cx-r.left)*scaleX,y:(cy-r.top)*scaleY};
+}
+
+function appStartDraw(e){
+  appDrawing=true;
+  var p=getAppPos(e);appStartX=p.x;appStartY=p.y;appLastX=p.x;appLastY=p.y;
+  appSetCtxStyle();
+  if(appTool==='fill'){appFloodFill(Math.round(p.x),Math.round(p.y));appDrawing=false;return;}
+  if(['pen','brush','eraser'].indexOf(appTool)!==-1){drawCtx.beginPath();drawCtx.moveTo(p.x,p.y);}
+  else{appSnapshot=drawCtx.getImageData(0,0,drawCanvas.width,drawCanvas.height);}
+}
+function appDraw(e){
+  if(!appDrawing)return;
+  var p=getAppPos(e);appSetCtxStyle();
+  if(appTool==='pen'||appTool==='brush'){
+    drawCtx.globalCompositeOperation='source-over';
+    if(appTool==='brush'){drawCtx.lineWidth=appLineSize*3;drawCtx.globalAlpha=appOpacity*0.5;}
+    drawCtx.lineTo(p.x,p.y);drawCtx.stroke();drawCtx.beginPath();drawCtx.moveTo(p.x,p.y);
+  }else if(appTool==='eraser'){
+    drawCtx.globalCompositeOperation='destination-out';drawCtx.lineWidth=appLineSize*4;
+    drawCtx.lineTo(p.x,p.y);drawCtx.stroke();drawCtx.beginPath();drawCtx.moveTo(p.x,p.y);
+    drawCtx.globalCompositeOperation='source-over';
+  }else{
+    drawCtx.putImageData(appSnapshot,0,0);drawCtx.globalCompositeOperation='source-over';
+    appDrawShape(appTool,appStartX,appStartY,p.x,p.y);
+  }
+  appLastX=p.x;appLastY=p.y;
+}
+function appEndDraw(e){
+  if(!appDrawing)return;appDrawing=false;
+  drawCtx.globalCompositeOperation='source-over';drawCtx.globalAlpha=1;
+  var toolNames={pen:'Qalam',brush:'Mo\'yqalam',line:'Chiziq',rect:'To\'rtburchak',circle:'Aylana',triangle:'Uchburchak',star:'Yulduz',eraser:'O\'chirg\'ich'};
+  if(appTool!=='eraser'&&appTool!=='fill')appAddLayer(toolNames[appTool]||appTool);
+  appSaveSnapshot();
+}
+function appDrawShape(t,x1,y1,x2,y2){
+  appSetCtxStyle();
+  var dx=x2-x1,dy=y2-y1;
+  if(t==='line'){drawCtx.beginPath();drawCtx.moveTo(x1,y1);drawCtx.lineTo(x2,y2);drawCtx.stroke();}
+  else if(t==='rect'){if(appFillEnabled)drawCtx.fillRect(x1,y1,dx,dy);drawCtx.strokeRect(x1,y1,dx,dy);}
+  else if(t==='circle'){var r=Math.sqrt(dx*dx+dy*dy)/2;var cx=(x1+x2)/2,cy=(y1+y2)/2;drawCtx.beginPath();drawCtx.arc(cx,cy,r,0,Math.PI*2);if(appFillEnabled)drawCtx.fill();drawCtx.stroke();}
+  else if(t==='triangle'){drawCtx.beginPath();drawCtx.moveTo(x1+(x2-x1)/2,y1);drawCtx.lineTo(x2,y2);drawCtx.lineTo(x1,y2);drawCtx.closePath();if(appFillEnabled)drawCtx.fill();drawCtx.stroke();}
+  else if(t==='star'){var s=Math.sqrt(dx*dx+dy*dy)/2;drawAppStarShape((x1+x2)/2,(y1+y2)/2,s,5);}
+}
+function appFloodFill(fx,fy){
+  var imgData=drawCtx.getImageData(0,0,drawCanvas.width,drawCanvas.height);
+  var data=imgData.data;var idx=(fy*drawCanvas.width+fx)*4;
+  var tr=data[idx],tg=data[idx+1],tb=data[idx+2];
+  var nr=parseInt(appFillColor.slice(1,3),16),ng=parseInt(appFillColor.slice(3,5),16),nb=parseInt(appFillColor.slice(5,7),16);
+  if(tr===nr&&tg===ng&&tb===nb)return;
+  var stack=[[fx,fy]];
+  while(stack.length){
+    var coord=stack.pop();var px=coord[0],py=coord[1];
+    if(px<0||px>=drawCanvas.width||py<0||py>=drawCanvas.height)continue;
+    var i=(py*drawCanvas.width+px)*4;
+    if(Math.abs(data[i]-tr)>30||Math.abs(data[i+1]-tg)>30||Math.abs(data[i+2]-tb)>30)continue;
+    data[i]=nr;data[i+1]=ng;data[i+2]=nb;data[i+3]=255;
+    stack.push([px+1,py],[px-1,py],[px,py+1],[px,py-1]);
+  }
+  drawCtx.putImageData(imgData,0,0);appAddLayer('To\'ldirish');appSaveSnapshot();
+}
+
+drawCanvas=document.getElementById('drawCanvas');
+drawCanvas.addEventListener('mousedown',appStartDraw);
+drawCanvas.addEventListener('mousemove',appDraw);
+drawCanvas.addEventListener('mouseup',appEndDraw);
+drawCanvas.addEventListener('mouseleave',appEndDraw);
+drawCanvas.addEventListener('touchstart',function(e){e.preventDefault();appStartDraw(e);},{passive:false});
+drawCanvas.addEventListener('touchmove',function(e){e.preventDefault();appDraw(e);},{passive:false});
+drawCanvas.addEventListener('touchend',appEndDraw);
+</script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Logo Master — Professional Logo Design</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --gold:#C9A84C;--gold-light:#E8CC7A;--gold-dark:#8B6914;
+  --black:#0A0A0A;--dark:#111111;--dark2:#1A1A1A;--dark3:#252525;
+  --white:#F5F0E8;--muted:#888;
+  --red:#E05555;--green:#55C788;--blue:#5599E0;--purple:#9B6FE0;
+  --font-display:'Bebas Neue',sans-serif;--font-body:'Manrope',sans-serif;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:var(--font-body);overflow-x:hidden;}
+
+/* ── APP MODES ── */
+#landing-page{display:block;}
+#drawing-app{display:none;}
+#landing-page.hidden{display:none;}
+#drawing-app.visible{display:flex;flex-direction:column;height:100vh;}
+
+/* ── LANDING NAV ── */
+.landing-nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:20px 60px;
+  background:rgba(10,10,10,0.85);backdrop-filter:blur(12px);
+  border-bottom:0.5px solid rgba(201,168,76,0.15);
+}
+.nav-logo{font-family:var(--font-display);font-size:28px;letter-spacing:3px;color:var(--gold);}
+.nav-logo span{color:var(--white);}
+.nav-links{display:flex;gap:36px;list-style:none;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:13px;font-weight:500;letter-spacing:1px;text-transform:uppercase;transition:color .2s;}
+.nav-links a:hover{color:var(--gold);}
+.nav-cta{
+  background:var(--gold);color:var(--black);padding:10px 24px;border-radius:2px;
+  font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+  text-decoration:none;cursor:pointer;border:none;transition:background .2s,transform .1s;
+}
+.nav-cta:hover{background:var(--gold-light);transform:translateY(-1px);}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  flex-direction:column;text-align:center;position:relative;padding:120px 40px 80px;overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 50% at 50% 0%,rgba(201,168,76,0.12) 0%,transparent 60%),
+  radial-gradient(ellipse 40% 40% at 80% 80%,rgba(201,168,76,0.05) 0%,transparent 50%);
+}
+.hero-grid{
+  position:absolute;inset:0;
+  background-image:linear-gradient(rgba(201,168,76,0.04) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(201,168,76,0.04) 1px,transparent 1px);
+  background-size:60px 60px;
+  mask-image:radial-gradient(ellipse 80% 60% at 50% 40%,black 30%,transparent 80%);
+}
+.hero-eyebrow{
+  font-size:11px;font-weight:600;letter-spacing:4px;text-transform:uppercase;
+  color:var(--gold);margin-bottom:20px;position:relative;display:flex;align-items:center;gap:12px;
+}
+.hero-eyebrow::before,.hero-eyebrow::after{content:'';width:40px;height:1px;background:var(--gold);opacity:.5;}
+.hero-title{font-family:var(--font-display);font-size:clamp(72px,12vw,160px);line-height:.92;letter-spacing:4px;position:relative;z-index:1;}
+.hero-title .line1{color:var(--white);display:block;}
+.hero-title .line2{color:transparent;-webkit-text-stroke:1.5px var(--gold);display:block;}
+.hero-sub{font-size:16px;font-weight:300;color:var(--muted);max-width:480px;line-height:1.7;margin:28px auto 44px;position:relative;z-index:1;}
+.hero-buttons{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;position:relative;z-index:1;}
+.btn-primary{
+  background:var(--gold);color:var(--black);padding:16px 40px;font-size:13px;font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;border:none;border-radius:2px;cursor:pointer;
+  text-decoration:none;transition:background .2s,transform .15s;
+}
+.btn-primary:hover{background:var(--gold-light);transform:translateY(-2px);}
+.btn-outline{
+  background:transparent;color:var(--white);padding:16px 40px;font-size:13px;font-weight:600;
+  letter-spacing:2px;text-transform:uppercase;border:1px solid rgba(255,255,255,.2);border-radius:2px;
+  cursor:pointer;text-decoration:none;transition:border-color .2s,color .2s,transform .15s;
+}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px);}
+.hero-stats{display:flex;gap:60px;justify-content:center;margin-top:80px;position:relative;z-index:1;padding-top:40px;border-top:0.5px solid rgba(255,255,255,0.08);}
+.stat{text-align:center;}
+.stat-num{font-family:var(--font-display);font-size:42px;color:var(--gold);letter-spacing:2px;display:block;}
+.stat-label{font-size:11px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;}
+
+/* ── MARQUEE ── */
+.marquee-wrap{background:var(--gold);overflow:hidden;padding:14px 0;}
+.marquee-track{display:flex;gap:0;animation:marquee 18s linear infinite;white-space:nowrap;}
+.marquee-item{font-family:var(--font-display);font-size:15px;letter-spacing:4px;color:var(--black);padding:0 48px;}
+.marquee-dot{padding:0;opacity:0.4;}
+@keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* ── LANDING SECTIONS ── */
+.landing-section{padding:100px 60px;}
+.section-label{font-size:11px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+.section-title{font-family:var(--font-display);font-size:clamp(40px,5vw,72px);line-height:1;letter-spacing:2px;color:var(--white);margin-bottom:20px;}
+.section-sub{font-size:15px;color:var(--muted);max-width:520px;line-height:1.7;}
+
+/* Services */
+.services{background:var(--dark);}
+.services-head{text-align:center;margin-bottom:64px;}
+.services-head .section-sub{margin:0 auto;}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.06);max-width:1100px;margin:0 auto;}
+.service-card{background:var(--dark);padding:44px 36px;transition:background .25s;cursor:default;position:relative;overflow:hidden;}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold);transform:scaleX(0);transition:transform .3s;}
+.service-card:hover{background:var(--dark2);}
+.service-card:hover::before{transform:scaleX(1);}
+.service-icon{width:48px;height:48px;border:1px solid rgba(201,168,76,0.3);border-radius:4px;display:flex;align-items:center;justify-content:center;margin-bottom:24px;font-size:22px;}
+.service-name{font-family:var(--font-display);font-size:26px;letter-spacing:1px;color:var(--white);margin-bottom:10px;}
+.service-desc{font-size:13px;color:var(--muted);line-height:1.65;}
+.service-price{margin-top:24px;font-size:22px;font-weight:700;color:var(--gold);}
+.service-price span{font-size:13px;font-weight:400;color:var(--muted);}
+
+/* Portfolio */
+.portfolio{background:var(--black);}
+.portfolio-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:48px;flex-wrap:wrap;gap:20px;max-width:1100px;margin:0 auto 48px;}
+.portfolio-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:2px;max-width:1100px;margin:0 auto;}
+.logo-card{
+  aspect-ratio:4/3;background:var(--dark2);display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:12px;position:relative;overflow:hidden;
+  cursor:pointer;transition:transform .3s;
+}
+.logo-card:hover{transform:scale(1.02);z-index:2;}
+.logo-card:hover .logo-overlay{opacity:1;}
+.logo-overlay{
+  position:absolute;inset:0;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.3);
+  opacity:0;transition:opacity .3s;display:flex;align-items:flex-end;padding:16px;
+}
+.logo-tag{font-size:11px;color:var(--gold);letter-spacing:2px;text-transform:uppercase;}
+.logo-card svg{width:80px;height:80px;}
+.logo-wordmark{font-family:var(--font-display);font-size:13px;letter-spacing:3px;color:rgba(255,255,255,0.5);text-transform:uppercase;}
+
+/* Process */
+.process{background:var(--dark);}
+.process-head{text-align:center;margin-bottom:64px;}
+.process-head .section-sub{margin:0 auto;}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0;max-width:1100px;margin:0 auto;position:relative;}
+.step{padding:40px 32px;border-left:1px solid rgba(255,255,255,0.06);position:relative;}
+.step:first-child{border-left:none;}
+.step-num{font-family:var(--font-display);font-size:72px;line-height:1;color:rgba(201,168,76,0.12);margin-bottom:16px;display:block;}
+.step-title{font-family:var(--font-display);font-size:22px;letter-spacing:1px;color:var(--white);margin-bottom:10px;}
+.step-desc{font-size:13px;color:var(--muted);line-height:1.65;}
+
+/* Testimonials */
+.testimonials{background:var(--black);}
+.t-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;max-width:1100px;margin:48px auto 0;}
+.t-card{background:var(--dark2);border:0.5px solid rgba(255,255,255,0.07);padding:36px;border-radius:4px;position:relative;}
+.t-quote{font-size:48px;line-height:1;color:var(--gold);opacity:.4;font-family:Georgia,serif;margin-bottom:16px;}
+.t-text{font-size:14px;color:rgba(245,240,232,0.75);line-height:1.75;margin-bottom:24px;}
+.t-author{display:flex;align-items:center;gap:12px;}
+.t-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--gold-dark),var(--gold));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;color:var(--black);}
+.t-name{font-size:13px;font-weight:600;color:var(--white);}
+.t-role{font-size:11px;color:var(--muted);}
+
+/* CTA */
+.cta-banner{background:var(--gold);padding:80px 60px;text-align:center;}
+.cta-banner .section-title{color:var(--black);}
+.cta-banner .section-sub{color:rgba(0,0,0,0.55);margin:0 auto 36px;}
+.btn-dark{
+  background:var(--black);color:var(--gold);padding:18px 48px;font-size:13px;font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;border:none;border-radius:2px;cursor:pointer;
+  text-decoration:none;transition:background .2s,transform .15s;
+}
+.btn-dark:hover{background:var(--dark2);transform:translateY(-2px);}
+
+/* Footer */
+.landing-footer{
+  background:var(--dark);padding:60px;border-top:0.5px solid rgba(255,255,255,0.06);
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;
+}
+.footer-logo{font-family:var(--font-display);font-size:32px;letter-spacing:4px;color:var(--gold);}
+.footer-logo span{color:var(--white);}
+.footer-links{display:flex;gap:32px;list-style:none;}
+.footer-links a{font-size:12px;color:var(--muted);text-decoration:none;letter-spacing:1px;text-transform:uppercase;transition:color .2s;}
+.footer-links a:hover{color:var(--gold);}
+.footer-copy{font-size:11px;color:rgba(136,136,136,0.5);}
+
+/* Fade-up */
+.fade-up{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease;}
+.fade-up.visible{opacity:1;transform:translateY(0);}
+
+/* ═══════════════════════════════════════ */
+/* ── DRAWING APP ── */
+/* ═══════════════════════════════════════ */
+.app-topbar{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 16px;height:52px;background:var(--black);
+  border-bottom:1px solid rgba(201,168,76,0.2);flex-shrink:0;gap:12px;
+}
+.app-main{display:flex;flex:1;overflow:hidden;}
+.app-left-panel{
+  width:220px;flex-shrink:0;background:var(--black);
+  border-right:1px solid rgba(255,255,255,0.07);
+  display:flex;flex-direction:column;overflow-y:auto;
+}
+.app-panel-section{padding:14px 14px 10px;}
+.app-panel-title{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+.app-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px;}
+.app-tool-btn{
+  background:var(--dark2);border:1px solid rgba(255,255,255,0.08);
+  color:var(--white);padding:8px 6px;border-radius:5px;font-size:11px;font-weight:600;cursor:pointer;
+  display:flex;flex-direction:column;align-items:center;gap:4px;transition:all .15s;
+}
+.app-tool-btn .icon{font-size:18px;line-height:1;}
+.app-tool-btn:hover{background:var(--dark3);border-color:rgba(201,168,76,0.3);}
+.app-tool-btn.active{background:rgba(201,168,76,0.15);border-color:var(--gold);color:var(--gold);}
+.app-color-row{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+.app-color-label{font-size:11px;color:var(--muted);min-width:40px;}
+.app-color-swatch{width:32px;height:32px;border-radius:4px;border:2px solid rgba(255,255,255,0.2);cursor:pointer;transition:transform .1s;}
+.app-color-swatch:hover{transform:scale(1.1);}
+input[type=color]{opacity:0;position:absolute;width:32px;height:32px;cursor:pointer;}
+.app-palette{display:flex;flex-wrap:wrap;gap:5px;}
+.app-pal-dot{width:24px;height:24px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:all .15s;}
+.app-pal-dot:hover{transform:scale(1.2);border-color:rgba(255,255,255,0.5);}
+.app-slider-wrap{margin-bottom:10px;}
+.app-slider-row-ui{display:flex;align-items:center;gap:8px;margin-bottom:4px;}
+.app-slider-name{font-size:11px;color:var(--muted);min-width:48px;}
+.app-slider-val{font-size:11px;color:var(--gold);min-width:28px;text-align:right;}
+input[type=range]{flex:1;-webkit-appearance:none;height:4px;background:var(--dark3);border-radius:2px;outline:none;}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;border-radius:50%;background:var(--gold);cursor:pointer;}
+.app-shape-gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;}
+.app-shape-item{
+  aspect-ratio:1;background:var(--dark2);border:1px solid rgba(255,255,255,0.08);
+  border-radius:4px;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:all .15s;padding:4px;
+}
+.app-shape-item:hover{border-color:var(--gold);background:rgba(201,168,76,0.1);}
+.app-shape-item canvas{width:100%;height:100%;}
+.app-divider{height:1px;background:rgba(255,255,255,0.06);margin:4px 0;}
+.app-text-input{
+  width:100%;background:var(--dark2);border:1px solid rgba(255,255,255,0.1);
+  color:var(--white);padding:7px 10px;border-radius:4px;font-size:13px;font-family:var(--font-body);outline:none;
+}
+.app-text-input:focus{border-color:var(--gold);}
+.app-font-select{
+  width:100%;background:var(--dark2);border:1px solid rgba(255,255,255,0.1);
+  color:var(--white);padding:6px 8px;border-radius:4px;font-size:12px;margin-top:6px;outline:none;cursor:pointer;
+}
+.app-font-select option{background:var(--dark);}
+.app-add-text-btn{
+  width:100%;margin-top:6px;background:rgba(201,168,76,0.15);border:1px solid var(--gold);
+  color:var(--gold);padding:7px;border-radius:4px;font-size:12px;font-weight:700;cursor:pointer;transition:background .15s;
+}
+.app-add-text-btn:hover{background:rgba(201,168,76,0.3);}
+.app-bg-btns{display:flex;gap:5px;flex-wrap:wrap;}
+.app-bg-btn{width:28px;height:28px;border-radius:4px;cursor:pointer;border:2px solid rgba(255,255,255,0.2);transition:all .15s;}
+.app-bg-btn:hover,.app-bg-btn.active{border-color:var(--gold);transform:scale(1.1);}
+
+/* Canvas area */
+.app-canvas-area{
+  flex:1;display:flex;align-items:center;justify-content:center;
+  background:repeating-conic-gradient(#1A1A1A 0% 25%,#161616 0% 50%) 0 0/24px 24px;
+  position:relative;overflow:hidden;
+}
+#drawCanvas{border:1px solid rgba(201,168,76,0.25);cursor:crosshair;box-shadow:0 0 60px rgba(0,0,0,0.8);display:block;}
+.app-canvas-size-label{position:absolute;bottom:12px;right:16px;font-size:11px;color:rgba(255,255,255,0.2);pointer-events:none;}
+
+/* Back button */
+.app-back-btn{
+  background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.4);
+  color:var(--gold);padding:6px 14px;border-radius:4px;font-size:12px;font-weight:600;
+  cursor:pointer;display:flex;align-items:center;gap:5px;transition:all .15s;white-space:nowrap;
+}
+.app-back-btn:hover{background:rgba(201,168,76,0.3);}
+
+/* Top tool buttons */
+.app-tbtn{
+  background:var(--dark2);border:1px solid rgba(255,255,255,0.1);
+  color:var(--white);padding:6px 12px;border-radius:4px;font-size:12px;font-weight:600;
+  cursor:pointer;display:flex;align-items:center;gap:5px;transition:all .15s;white-space:nowrap;
+}
+.app-tbtn:hover{background:var(--dark3);border-color:rgba(201,168,76,0.4);}
+.app-tbtn-gold{background:var(--gold);color:var(--black);border:none;font-weight:700;}
+.app-tbtn-gold:hover{background:var(--gold-light);}
+.app-tbtn-red{background:rgba(224,85,85,0.15);border-color:var(--red);color:var(--red);}
+.app-tbtn-red:hover{background:rgba(224,85,85,0.3);}
+
+/* Right panel */
+.app-right-panel{
+  width:180px;flex-shrink:0;background:var(--black);
+  border-left:1px solid rgba(255,255,255,0.07);
+  display:flex;flex-direction:column;overflow-y:auto;
+}
+.app-layer-item{
+  display:flex;align-items:center;gap:8px;padding:8px 12px;
+  border-bottom:1px solid rgba(255,255,255,0.05);cursor:pointer;font-size:12px;color:var(--muted);transition:background .1s;
+}
+.app-layer-item:hover{background:var(--dark2);}
+.app-layer-item.active{background:rgba(201,168,76,0.1);color:var(--white);}
+.app-layer-del{margin-left:auto;font-size:11px;color:var(--red);opacity:0;transition:opacity .15s;cursor:pointer;padding:2px 4px;}
+.app-layer-item:hover .app-layer-del{opacity:1;}
+
+/* Responsive */
+@media(max-width:700px){.app-left-panel{width:160px;}.app-right-panel{display:none;}.landing-nav{padding:16px 24px;}.nav-links{display:none;}.landing-section{padding:60px 24px;}}
+@media(max-width:500px){.app-left-panel{display:none;}.hero-stats{gap:24px;flex-wrap:wrap;}.cta-banner{padding:60px 24px;}}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- LANDING PAGE -->
+<!-- ═══════════════════════════════════════ -->
+<div id="landing-page">
+
+  <nav class="landing-nav">
+    <div class="nav-logo">LOGO<span>MASTER</span></div>
+    <ul class="nav-links">
+      <li><a href="#services">Xizmatlar</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#process">Jarayon</a></li>
+      <li><a href="#reviews">Sharhlar</a></li>
+    </ul>
+    <button class="nav-cta" onclick="showDrawingApp()">🎨 Logo chizish</button>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-eyebrow">Professional Logotip Dizayni</div>
+    <h1 class="hero-title">
+      <span class="line1">LOGO</span>
+      <span class="line2">MASTER</span>
+    </h1>
+    <p class="hero-sub">Brendingiz uchun zamonaviy, professional va unutilmas logotiplar yaratamiz. Sizning g'oyangiz — bizning san'atimiz.</p>
+    <div class="hero-buttons">
+      <a href="#services" class="btn-primary">Xizmatlarni ko'rish</a>
+      <button class="btn-outline" onclick="showDrawingApp()">🎨 Logo chizish</button>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num">500+</span><span class="stat-label">Yaratilgan logo</span></div>
+      <div class="stat"><span class="stat-num">8+</span><span class="stat-label">Yillik tajriba</span></div>
+      <div class="stat"><span class="stat-num">98%</span><span class="stat-label">Mijoz mamnunligi</span></div>
+      <div class="stat"><span class="stat-num">50+</span><span class="stat-label">Soha</span></div>
+    </div>
+  </section>
+
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <span class="marquee-item">BRENDING</span><span class="marquee-item marquee-dot">✦</span>
+      <span class="marquee-item">LOGOTIP DIZAYN</span><span class="marquee-item marquee-dot">✦</span>
+      <span class="marquee-item">KORPORATIV IDENTIFIKATSIYA</span><span class="marquee-item marquee-dot">✦</span>
+      <span class="marquee-item">VEKTORAL GRAFIKA</span><span class="marquee-item marquee-dot">✦</span>
+      <span class="marquee-item">BRENDBOOK</span><span class="marquee-item marquee-dot">✦</span>
+      <span class="marquee-item">BRENDING</span><span class="marquee-item marquee-dot">✦</span>
+      <span class="marquee-item">LOGOTIP DIZAYN</span><span class="marquee-item marquee-dot">✦</span>
+      <span class="marquee-item">KORPORATIV IDENTIFIKATSIYA</span><span class="marquee-item marquee-dot">✦</span>
+      <span class="marquee-item">VEKTORAL GRAFIKA</span><span class="marquee-item marquee-dot">✦</span>
+      <span class="marquee-item">BRENDBOOK</span><span class="marquee-item marquee-dot">✦</span>
+    </div>
+  </div>
+
+  <section class="landing-section services" id="services">
+    <div class="services-head fade-up">
+      <div class="section-label">Xizmatlarimiz</div>
+      <h2 class="section-title">Nima taklif qilamiz</h2>
+      <p class="section-sub">Har bir xizmatimiz sizning brendingizni raqobatchilardan ajratib turishga mo'ljallangan.</p>
+    </div>
+    <div class="services-grid fade-up">
+      <div class="service-card">
+        <div class="service-icon">◈</div>
+        <div class="service-name">Minimal Logo</div>
+        <p class="service-desc">Zamonaviy va sof dizayn. Kichik korxonalar va individual brendlar uchun ideal tanlov.</p>
+        <div class="service-price">$99 <span>dan boshlab</span></div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">⬡</div>
+        <div class="service-name">Korporativ Logo</div>
+        <p class="service-desc">Professional kompaniyalar uchun to'liq korporativ uslub va logotip paketi.</p>
+        <div class="service-price">$249 <span>dan boshlab</span></div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">◉</div>
+        <div class="service-name">Premium Brend</div>
+        <p class="service-desc">To'liq brendbook: logotip, ranglar, shriftlar, vizitka, letterhead va barcha brandinglar.</p>
+        <div class="service-price">$499 <span>dan boshlab</span></div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">✦</div>
+        <div class="service-name">Qayta Dizayn</div>
+        <p class="service-desc">Mavjud logotipingizni yangilang va zamonaviy ko'rinish bering, biroq identifikatsiyani saqlang.</p>
+        <div class="service-price">$149 <span>dan boshlab</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="landing-section portfolio" id="portfolio">
+    <div class="portfolio-head fade-up">
+      <div>
+        <div class="section-label">Ishlarimiz</div>
+        <h2 class="section-title">Portfolio</h2>
+      </div>
+      <p style="font-size:14px;color:var(--muted);max-width:300px;line-height:1.65;">Turli sohalardagi mijozlarimiz uchun yaratilgan logotiplar.</p>
+    </div>
+    <div class="portfolio-grid fade-up">
+      <div class="logo-card">
+        <svg viewBox="0 0 80 80" fill="none"><polygon points="40,8 72,62 8,62" stroke="#C9A84C" stroke-width="2" fill="none"/><polygon points="40,20 62,56 18,56" fill="rgba(201,168,76,0.15)"/><circle cx="40" cy="40" r="8" fill="#C9A84C"/></svg>
+        <span class="logo-wordmark">APEX</span>
+        <div class="logo-overlay"><span class="logo-tag">IT Kompaniya</span></div>
+      </div>
+      <div class="logo-card" style="background:#0D1117;">
+        <svg viewBox="0 0 80 80" fill="none"><rect x="15" y="15" width="22" height="22" fill="#C9A84C"/><rect x="43" y="15" width="22" height="22" fill="none" stroke="#C9A84C" stroke-width="1.5"/><rect x="15" y="43" width="22" height="22" fill="none" stroke="#C9A84C" stroke-width="1.5"/><rect x="43" y="43" width="22" height="22" fill="rgba(201,168,76,0.3)"/></svg>
+        <span class="logo-wordmark">GRID CO</span>
+        <div class="logo-overlay"><span class="logo-tag">Arxitektura</span></div>
+      </div>
+      <div class="logo-card" style="background:#0A0F1E;">
+        <svg viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="28" stroke="#C9A84C" stroke-width="1.5" stroke-dasharray="4 3"/><circle cx="40" cy="40" r="16" fill="none" stroke="#C9A84C" stroke-width="2"/><circle cx="40" cy="40" r="5" fill="#C9A84C"/><line x1="40" y1="12" x2="40" y2="24" stroke="#C9A84C" stroke-width="1.5"/><line x1="40" y1="56" x2="40" y2="68" stroke="#C9A84C" stroke-width="1.5"/></svg>
+        <span class="logo-wordmark">ORBIT</span>
+        <div class="logo-overlay"><span class="logo-tag">Texnologiya</span></div>
+      </div>
+      <div class="logo-card" style="background:#0F0D0A;">
+        <svg viewBox="0 0 80 80" fill="none"><path d="M20 60 L40 15 L60 60" stroke="#C9A84C" stroke-width="2.5" stroke-linejoin="round"/><path d="M27 45 L53 45" stroke="#C9A84C" stroke-width="1.5"/><circle cx="40" cy="15" r="4" fill="#C9A84C"/></svg>
+        <span class="logo-wordmark">ALTURA</span>
+        <div class="logo-overlay"><span class="logo-tag">Restoran</span></div>
+      </div>
+      <div class="logo-card" style="background:#100A14;">
+        <svg viewBox="0 0 80 80" fill="none"><path d="M40 12 C40 12 18 28 18 46 C18 57 28 66 40 66 C52 66 62 57 62 46 C62 28 40 12 40 12Z" stroke="#C9A84C" stroke-width="1.5" fill="rgba(201,168,76,0.08)"/><path d="M40 26 C40 26 28 36 28 46 C28 52 33 57 40 57 C47 57 52 52 52 46 C52 36 40 26 40 26Z" fill="rgba(201,168,76,0.2)"/><circle cx="40" cy="46" r="6" fill="#C9A84C"/></svg>
+        <span class="logo-wordmark">DROPZ</span>
+        <div class="logo-overlay"><span class="logo-tag">Suv brendlari</span></div>
+      </div>
+      <div class="logo-card" style="background:#0A100A;">
+        <svg viewBox="0 0 80 80" fill="none"><rect x="12" y="30" width="56" height="34" rx="4" stroke="#C9A84C" stroke-width="1.5" fill="none"/><path d="M26 30 L26 22 C26 18 30 14 40 14 C50 14 54 18 54 22 L54 30" stroke="#C9A84C" stroke-width="1.5"/><circle cx="40" cy="47" r="6" fill="#C9A84C"/><line x1="40" y1="53" x2="40" y2="58" stroke="#C9A84C" stroke-width="1.5"/></svg>
+        <span class="logo-wordmark">VAULTX</span>
+        <div class="logo-overlay"><span class="logo-tag">Moliya</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="landing-section process" id="process">
+    <div class="process-head fade-up">
+      <div class="section-label">Ish jarayoni</div>
+      <h2 class="section-title">Qanday ishlashimiz</h2>
+      <p class="section-sub">Oddiy, tezkor va shaffof ish jarayoni — natija doim belgilangan muddatda.</p>
+    </div>
+    <div class="steps fade-up">
+      <div class="step"><span class="step-num">01</span><div class="step-title">Muloqot</div><p class="step-desc">Sizning biznesingiz, maqsadlaringiz va raqobatchilaringiz haqida batafsil suhbat o'tkazamiz.</p></div>
+      <div class="step"><span class="step-num">02</span><div class="step-title">Kontseptsiya</div><p class="step-desc">3 xil yo'nalishda eskizlar yaratib, sizga taqdim qilamiz. Eng yoqqanini tanlaysiz.</p></div>
+      <div class="step"><span class="step-num">03</span><div class="step-title">Dizayn</div><p class="step-desc">Tanlangan kontseptsiyani raqamli formatda professional darajada yakunlaymiz.</p></div>
+      <div class="step"><span class="step-num">04</span><div class="step-title">Topshirish</div><p class="step-desc">Barcha formatda (AI, SVG, PNG, PDF) fayllari va brandbook bilan birga topshiramiz.</p></div>
+    </div>
+  </section>
+
+  <section class="landing-section testimonials" id="reviews">
+    <div class="fade-up" style="text-align:center;">
+      <div class="section-label">Mijozlar fikri</div>
+      <h2 class="section-title">Ular nima dedi</h2>
+    </div>
+    <div class="t-grid fade-up">
+      <div class="t-card">
+        <div class="t-quote">"</div>
+        <p class="t-text">Logo Master jamoasi biz kutgandan ham yaxshi narsani yaratdi. Bizning brendimiz endi chindan ham professional ko'rinadi.</p>
+        <div class="t-author"><div class="t-avatar">AK</div><div><div class="t-name">Alisher Karimov</div><div class="t-role">TechStart.uz — CEO</div></div></div>
+      </div>
+      <div class="t-card">
+        <div class="t-quote">"</div>
+        <p class="t-text">3 kun ichida 3 ta kontseptsiya, 2 ta o'zgartirishdan keyin mukammal logotip tayyorlandi. Tez va sifatli ish uchun katta rahmat!</p>
+        <div class="t-author"><div class="t-avatar">SM</div><div><div class="t-name">Sarvinoy Mirzayeva</div><div class="t-role">Cafe Gusto — Owner</div></div></div>
+      </div>
+      <div class="t-card">
+        <div class="t-quote">"</div>
+        <p class="t-text">Narxi ham qulay, sifati ham ajoyib. Bizning kompaniyamiz uchun to'liq brendbook tayyorlab berishdi.</p>
+        <div class="t-author"><div class="t-avatar">BT</div><div><div class="t-name">Bobur Toshmatov</div><div class="t-role">BuildPro — Marketing Dir.</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-banner fade-up" id="contact">
+    <div class="section-label" style="color:rgba(0,0,0,0.45);">Hoziroq boshlang</div>
+    <h2 class="section-title">Brendingizni Yarating</h2>
+    <p class="section-sub">Logotipingizga muhtojmisiz? Biz bilan bog'laning — birinchi maslahat bepul!</p>
+    <button class="btn-dark" onclick="showDrawingApp()">🎨 Logo chizish</button>
+  </div>
+
+  <footer class="landing-footer">
+    <div class="footer-logo">LOGO<span>MASTER</span></div>
+    <ul class="footer-links">
+      <li><a href="#services">Xizmatlar</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#process">Jarayon</a></li>
+      <li><a href="#reviews">Sharhlar</a></li>
+    </ul>
+    <div class="footer-copy">© 2025 LogoMaster. Barcha huquqlar himoyalangan.</div>
+  </footer>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- DRAWING APP -->
+<!-- ═══════════════════════════════════════ -->
+<div id="drawing-app">
+
+  <div class="app-topbar">
+    <button class="app-back-btn" onclick="showLanding()">← Orqaga</button>
+    <div class="logo-name" style="font-family:var(--font-display);font-size:22px;letter-spacing:3px;color:var(--gold);white-space:nowrap;">LOGO<span style="color:var(--white);">MASTER</span></div>
+    <div style="display:flex;align-items:center;gap:6px;flex:1;justify-content:center;flex-wrap:wrap;">
+      <button class="app-tbtn" onclick="appUndo()">↩ Orqaga</button>
+      <button class="app-tbtn" onclick="appRedo()">↪ Qayta</button>
+      <button class="app-tbtn" onclick="appClear()">🗑 Tozalash</button>
+      <button class="app-tbtn" id="appGridBtn" onclick="appToggleGrid()">⊞ Grid</button>
+      <button class="app-tbtn" onclick="appZoomIn()">＋</button>
+      <button class="app-tbtn" onclick="appZoomOut()">－</button>
+    </div>
+    <div style="display:flex;gap:6px;align-items:center;">
+      <button class="app-tbtn app-tbtn-red" onclick="appClear()">Yangi</button>
+      <button class="app-tbtn app-tbtn-gold" onclick="appDownloadPNG()">⬇ PNG</button>
+      <button class="app-tbtn app-tbtn-gold" onclick="appDownloadSVG()">⬇ SVG</button>
+    </div>
+  </div>
+
+  <div class="app-main">
+    <div class="app-left-panel">
+      <div class="app-panel-section">
+        <div class="app-panel-title">Asboblar</div>
+        <div class="app-tool-grid">
+          <button class="app-tool-btn active" id="appToolPen" onclick="appSetTool('pen')"><span class="icon">✏️</span>Qalam</button>
+          <button class="app-tool-btn" id="appToolBrush" onclick="appSetTool('brush')"><span class="icon">🖌️</span>Mo'yqalam</button>
+          <button class="app-tool-btn" id="appToolLine" onclick="appSetTool('line')"><span class="icon">╱</span>Chiziq</button>
+          <button class="app-tool-btn" id="appToolRect" onclick="appSetTool('rect')"><span class="icon">▭</span>To'rtburchak</button>
+          <button class="app-tool-btn" id="appToolCircle" onclick="appSetTool('circle')"><span class="icon">○</span>Aylana</button>
+          <button class="app-tool-btn" id="appToolTriangle" onclick="appSetTool('triangle')"><span class="icon">△</span>Uchburchak</button>
+          <button class="app-tool-btn" id="appToolStar" onclick="appSetTool('star')"><span class="icon">★</span>Yulduz</button>
+          <button class="app-tool-btn" id="appToolEraser" onclick="appSetTool('eraser')"><span class="icon">⬜</span>O'chirg'ich</button>
+          <button class="app-tool-btn" id="appToolFill" onclick="appSetTool('fill')"><span class="icon">🪣</span>To'ldirish</button>
+          <button class="app-tool-btn" id="appToolSelect" onclick="appSetTool('select')"><span class="icon">↖️</span>Tanlash</button>
+        </div>
+      </div>
+      <div class="app-divider"></div>
+      <div class="app-panel-section">
+        <div class="app-panel-title">Rang</div>
+        <div class="app-color-row">
+          <span class="app-color-label">Chiziq</span>
+          <div style="position:relative;width:32px;height:32px;">
+            <div class="app-color-swatch" id="appStrokePrev" style="background:#C9A84C;"></div>
+            <input type="color" id="appStrokeColor" value="#C9A84C" onchange="appUpdateStroke(this.value)" style="position:absolute;top:0;left:0;">
+          </div>
+          <span style="font-size:11px;color:var(--muted)" id="appStrokeHex">#C9A84C</span>
+        </div>
+        <div class="app-color-row">
+          <span class="app-color-label">To'ldir</span>
+          <div style="position:relative;width:32px;height:32px;">
+            <div class="app-color-swatch" id="appFillPrev" style="background:transparent;border-style:dashed;"></div>
+            <input type="color" id="appFillColor" value="#C9A84C" onchange="appUpdateFill(this.value)" style="position:absolute;top:0;left:0;">
+          </div>
+          <label style="display:flex;align-items:center;gap:4px;font-size:11px;color:var(--muted);cursor:pointer;">
+            <input type="checkbox" id="appFillToggle" onchange="appToggleFill()" style="accent-color:var(--gold);"> To'ldir
+          </label>
+        </div>
+        <div class="app-palette" id="appPalette"></div>
+      </div>
+      <div class="app-divider"></div>
+      <div class="app-panel-section">
+        <div class="app-panel-title">O'lcham</div>
+        <div class="app-slider-wrap">
+          <div class="app-slider-row-ui">
+            <span class="app-slider-name">Qalinlik</span>
+            <input type="range" id="appSizeSlider" min="1" max="60" value="3" oninput="appUpdateSize(this.value)">
+            <span class="app-slider-val" id="appSizeVal">3px</span>
+          </div>
+          <div class="app-slider-row-ui">
+            <span class="app-slider-name">Shaffof.</span>
+            <input type="range" id="appOpacitySlider" min="5" max="100" value="100" oninput="appUpdateOpacity(this.value)">
+            <span class="app-slider-val" id="appOpacityVal">100%</span>
+          </div>
+        </div>
+      </div>
+      <div class="app-divider"></div>
+      <div class="app-panel-section">
+        <div class="app-panel-title">Tayyor shakllar</div>
+        <div class="app-shape-gallery" id="appShapeGallery"></div>
+      </div>
+      <div class="app-divider"></div>
+      <div class="app-panel-section">
+        <div class="app-panel-title">Matn / Logo nomi</div>
+        <input type="text" class="app-text-input" id="appTextInput" placeholder="Logo Master..." value="LOGO MASTER">
+        <select class="app-font-select" id="appFontSelect">
+          <option value="'Bebas Neue', sans-serif">Bebas Neue (Katta)</option>
+          <option value="'Manrope', sans-serif">Manrope (Zamonaviy)</option>
+          <option value="Georgia, serif">Georgia (Klassik)</option>
+          <option value="'Courier New', monospace">Courier New (Texnik)</option>
+          <option value="Impact, sans-serif">Impact (Qo'pol)</option>
+          <option value="'Times New Roman', serif">Times New Roman</option>
+        </select>
+        <button class="app-add-text-btn" onclick="appAddText()">＋ Matn qo'shish</button>
+      </div>
+      <div class="app-divider"></div>
+      <div class="app-panel-section">
+        <div class="app-panel-title">Fon rangi</div>
+        <div class="app-bg-btns" id="appBgBtns"></div>
+      </div>
+    </div>
+
+    <div class="app-canvas-area" id="appCanvasArea">
+      <canvas id="drawCanvas" width="600" height="600"></canvas>
+      <div class="app-canvas-size-label" id="appSizeLabel">600 × 600</div>
+    </div>
+
+    <div class="app-right-panel">
+      <div class="app-panel-section" style="border-bottom:1px solid rgba(255,255,255,0.07);padding-bottom:14px;">
+        <div class="app-panel-title">Qatlamlar</div>
+      </div>
+      <div id="appLayersList"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── MODE SWITCHING ──
+function showDrawingApp(){
+  document.getElementById('landing-page').classList.add('hidden');
+  document.getElementById('drawing-app').classList.add('visible');
+  document.body.style.overflow='hidden';
+  if(!appInitialized){appInit();appInitialized=true;}
+}
+function showLanding(){
+  document.getElementById('landing-page').classList.remove('hidden');
+  document.getElementById('drawing-app').classList.remove('visible');
+  document.body.style.overflow='';
+}
+
+// ── LANDING ANIMATIONS ──
+(function(){
+  var obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});
+  },{threshold:0.12});
+  document.querySelectorAll('.fade-up').forEach(function(el){obs.observe(el);});
+})();
+
+// ═══════════════════════════════════════
+// DRAWING APP STATE
+// ═══════════════════════════════════════
+var appInitialized=false;
+var drawCanvas, drawCtx;
+var appTool='pen';
+var appDrawing=false;
+var appStartX=0,appStartY=0,appLastX=0,appLastY=0;
+var appStrokeColor='#C9A84C';
+var appFillEnabled=false;
+var appFillColor='#C9A84C';
+var appLineSize=3;
+var appOpacity=1;
+var appShowGrid=false;
+var appCurrentBg='#0A0A0A';
+var appZoom=1;
+var appLayers=[];
+var appUndoStack=[];
+var appRedoStack=[];
+var appSnapshot;
+
+var APP_COLORS=[
+  '#C9A84C','#E8CC7A','#FFFFFF','#F5F0E8','#AAAAAA','#555555','#111111',
+  '#E05555','#E07755','#E0C055','#55C788','#55B5E0','#5599E0','#9B6FE0','#E055C7'
+];
+var APP_BG_COLORS=[
+  {c:'#0A0A0A',label:'Qora'},{c:'#FFFFFF',label:'Oq'},{c:'#1A1A2E',label:'Qo\'ng\'ir'},
+  {c:'#0D1117',label:'Tun'},{c:'#1B1B2F',label:'To\'q'},{c:'transparent',label:'Shaffof',pattern:true}
+];
+var APP_SHAPES=[
+  {name:'Aylana',draw:function(x,y,s){drawAppCircleShape(x,y,s);}},
+  {name:'Kvadrat',draw:function(x,y,s){drawAppRectShape(x,y,s);}},
+  {name:'Uchb.',draw:function(x,y,s){drawAppTriangleShape(x,y,s);}},
+  {name:'Yulduz',draw:function(x,y,s){drawAppStarShape(x,y,s,5);}},
+  {name:'Olmos',draw:function(x,y,s){drawAppDiamond(x,y,s);}},
+  {name:'Olti b.',draw:function(x,y,s){drawAppHexagon(x,y,s);}},
+  {name:'X',draw:function(x,y,s){drawAppX(x,y,s);}},
+  {name:'Strelka',draw:function(x,y,s){drawAppArrow(x,y,s);}}
+];
+
+function appInit(){
+  drawCanvas=document.getElementById('drawCanvas');
+  drawCtx=drawCanvas.getContext('2d');
+  appBuildPalette();
+  appBuildBgBtns();
+  appBuildShapeGallery();
+  appFillBg();
+  appSaveSnapshot();
+  appUpdateLayersList();
+  setTimeout(function(){
+    drawCtx.save();drawCtx.globalAlpha=0.07;
+    drawCtx.font="bold 64px 'Bebas Neue', sans-serif";drawCtx.fillStyle='#C9A84C';
+    drawCtx.textAlign='center';drawCtx.textBaseline='middle';
+    drawCtx.fillText('LOGO MASTER',drawCanvas.width/2,drawCanvas.height/2);
+    drawCtx.restore();
+  },200);
+}
+
+function appBuildPalette(){
+  var p=document.getElementById('appPalette');
+  APP_COLORS.forEach(function(c){
+    var d=document.createElement('div');d.className='app-pal-dot';d.style.background=c;d.title=c;
+    d.onclick=function(){appStrokeColor=c;appSyncStroke();};
+    p.appendChild(d);
+  });
+}
+function appBuildBgBtns(){
+  var wrap=document.getElementById('appBgBtns');
+  APP_BG_COLORS.forEach(function(b){
+    var d=document.createElement('div');d.className='app-bg-btn';
+    if(b.pattern){d.style.backgroundImage='repeating-conic-gradient(#999 0% 25%,#fff 0% 50%)';d.style.backgroundSize='8px 8px';}
+    else{d.style.background=b.c;}
+    d.style.border='2px solid rgba(255,255,255,0.2)';d.title=b.label;
+    d.onclick=function(){
+      appCurrentBg=b.c;appFillBg();
+      wrap.querySelectorAll('.app-bg-btn').forEach(function(x){x.classList.remove('active');});
+      d.classList.add('active');
+    };
+    wrap.appendChild(d);
+  });
+  wrap.children[0].classList.add('active');
+}
+function appBuildShapeGallery(){
+  var g=document.getElementById('appShapeGallery');
+  APP_SHAPES.forEach(function(sh){
+    var wrap=document.createElement('div');wrap.className='app-shape-item';wrap.title=sh.name;
+    var sc=document.createElement('canvas');sc.width=40;sc.height=40;
+    var sctx=sc.getContext('2d');
+    sctx.strokeStyle='#C9A84C';sctx.fillStyle='rgba(201,168,76,0.25)';sctx.lineWidth=1.5;
+    sh.draw.call({ctx:sctx},20,20,14);
+    wrap.appendChild(sc);
+    wrap.onclick=function(){appPlaceShape(sh);};
+    g.appendChild(wrap);
+  });
+}
+
+function appSyncStroke(){
+  document.getElementById('appStrokeColor').value=appStrokeColor;
+  document.getElementById('appStrokePrev').style.background=appStrokeColor;
+  document.getElementById('appStrokeHex').textContent=appStrokeColor;
+}
+function appUpdateStroke(v){appStrokeColor=v;document.getElementById('appStrokePrev').style.background=v;document.getElementById('appStrokeHex').textContent=v;}
+function appUpdateFill(v){appFillColor=v;if(appFillEnabled)document.getElementById('appFillPrev').style.background=v;}
+function appToggleFill(){
+  appFillEnabled=document.getElementById('appFillToggle').checked;
+  var fp=document.getElementById('appFillPrev');
+  if(appFillEnabled){fp.style.background=appFillColor;fp.style.borderStyle='solid';}
+  else{fp.style.background='transparent';fp.style.borderStyle='dashed';}
+}
+function appUpdateSize(v){appLineSize=parseInt(v);document.getElementById('appSizeVal').textContent=v+'px';}
+function appUpdateOpacity(v){appOpacity=parseInt(v)/100;document.getElementById('appOpacityVal').textContent=v+'%';}
+
+function appFillBg(){
+  if(appCurrentBg==='transparent'){drawCtx.clearRect(0,0,drawCanvas.width,drawCanvas.height);}
+  else{drawCtx.fillStyle=appCurrentBg;drawCtx.fillRect(0,0,drawCanvas.width,drawCanvas.height);}
+}
+
+function appSaveSnapshot(){
+  appUndoStack.push(drawCanvas.toDataURL());
+  if(appUndoStack.length>40)appUndoStack.shift();
+  appRedoStack=[];
+}
+function appUndo(){
+  if(appUndoStack.length<2)return;
+  appRedoStack.push(appUndoStack.pop());
+  var img=new Image();img.src=appUndoStack[appUndoStack.length-1];
+  img.onload=function(){drawCtx.clearRect(0,0,drawCanvas.width,drawCanvas.height);drawCtx.drawImage(img,0,0);};
+}
+function appRedo(){
+  if(!appRedoStack.length)return;
+  var state=appRedoStack.pop();appUndoStack.push(state);
+  var img=new Image();img.src=state;
+  img.onload=function(){drawCtx.clearRect(0,0,drawCanvas.width,drawCanvas.height);drawCtx.drawImage(img,0,0);};
+}
+function appClear(){
+  appLayers=[];drawCtx.clearRect(0,0,drawCanvas.width,drawCanvas.height);
+  appFillBg();appSaveSnapshot();appUpdateLayersList();
+}
+function appToggleGrid(){
+  appShowGrid=!appShowGrid;
+  if(appShowGrid)appDrawGridOverlay();else appFillBg();
+}
+function appDrawGridOverlay(){
+  drawCtx.save();drawCtx.strokeStyle='rgba(201,168,76,0.12)';drawCtx.lineWidth=0.5;
+  for(var x=0;x<drawCanvas.width;x+=30){drawCtx.beginPath();drawCtx.moveTo(x,0);drawCtx.lineTo(x,drawCanvas.height);drawCtx.stroke();}
+  for(var y=0;y<drawCanvas.height;y+=30){drawCtx.beginPath();drawCtx.moveTo(0,y);drawCtx.lineTo(drawCanvas.width,y);drawCtx.stroke();}
+  drawCtx.restore();
+}
+function appZoomIn(){appZoom=Math.min(appZoom+0.1,3);drawCanvas.style.transform='scale('+appZoom+')';}
+function appZoomOut(){appZoom=Math.max(appZoom-0.1,0.3);drawCanvas.style.transform='scale('+appZoom+')';}
+
+function appSetCtxStyle(){
+  drawCtx.strokeStyle=appStrokeColor;drawCtx.fillStyle=appFillEnabled?appFillColor:'transparent';
+  drawCtx.lineWidth=appLineSize;drawCtx.globalAlpha=appOpacity;drawCtx.lineCap='round';drawCtx.lineJoin='round';
+}
+
+function drawAppCircleShape(x,y,r){drawCtx.beginPath();drawCtx.arc(x,y,r,0,Math.PI*2);if(appFillEnabled)drawCtx.fill();drawCtx.stroke();}
+function drawAppRectShape(x,y,s){if(appFillEnabled)drawCtx.fillRect(x-s,y-s,s*2,s*2);drawCtx.strokeRect(x-s,y-s,s*2,s*2);}
+function drawAppTriangleShape(x,y,s){drawCtx.beginPath();drawCtx.moveTo(x,y-s);drawCtx.lineTo(x+s,y+s);drawCtx.lineTo(x-s,y+s);drawCtx.closePath();if(appFillEnabled)drawCtx.fill();drawCtx.stroke();}
+function drawAppStarShape(cx,cy,r,pts){
+  var ir=r*0.45;drawCtx.beginPath();
+  for(var i=0;i<pts*2;i++){var a=(i*Math.PI/pts)-Math.PI/2;var rad=i%2===0?r:ir;i===0?drawCtx.moveTo(cx+rad*Math.cos(a),cy+rad*Math.sin(a)):drawCtx.lineTo(cx+rad*Math.cos(a),cy+rad*Math.sin(a));}
+  drawCtx.closePath();if(appFillEnabled)drawCtx.fill();drawCtx.stroke();
+}
+function drawAppDiamond(x,y,s){drawCtx.beginPath();drawCtx.moveTo(x,y-s);drawCtx.lineTo(x+s,y);drawCtx.lineTo(x,y+s);drawCtx.lineTo(x-s,y);drawCtx.closePath();if(appFillEnabled)drawCtx.fill();drawCtx.stroke();}
+function drawAppHexagon(x,y,s){drawCtx.beginPath();for(var i=0;i<6;i++){var a=Math.PI/3*i-Math.PI/6;i===0?drawCtx.moveTo(x+s*Math.cos(a),y+s*Math.sin(a)):drawCtx.lineTo(x+s*Math.cos(a),y+s*Math.sin(a));}drawCtx.closePath();if(appFillEnabled)drawCtx.fill();drawCtx.stroke();}
+function drawAppX(x,y,s){drawCtx.beginPath();drawCtx.moveTo(x-s,y-s);drawCtx.lineTo(x+s,y+s);drawCtx.moveTo(x+s,y-s);drawCtx.lineTo(x-s,y+s);drawCtx.stroke();}
+function drawAppArrow(x,y,s){drawCtx.beginPath();drawCtx.moveTo(x-s,y);drawCtx.lineTo(x+s,y);drawCtx.lineTo(x+s-s*0.4,y-s*0.4);drawCtx.moveTo(x+s,y);drawCtx.lineTo(x+s-s*0.4,y+s*0.4);drawCtx.stroke();}
+
+function appPlaceShape(sh){
+  var cx=drawCanvas.width/2,cy=drawCanvas.height/2,s=40;
+  appSetCtxStyle();sh.draw(cx,cy,s);appAddLayer(sh.name);appSaveSnapshot();
+}
+
+function appAddText(){
+  var txt=document.getElementById('appTextInput').value||'LOGO';
+  var font=document.getElementById('appFontSelect').value;
+  var fs=Math.max(appLineSize*6,24);
+  drawCtx.save();appSetCtxStyle();
+  drawCtx.font=fs+'px '+font;drawCtx.textAlign='center';drawCtx.textBaseline='middle';
+  if(appFillEnabled){drawCtx.fillStyle=appFillColor;drawCtx.fillText(txt,drawCanvas.width/2,drawCanvas.height/2);}
+  else{drawCtx.fillStyle=appStrokeColor;drawCtx.fillText(txt,drawCanvas.width/2,drawCanvas.height/2);}
+  drawCtx.restore();appAddLayer('Matn: '+txt.slice(0,10));appSaveSnapshot();
+}
+
+function appAddLayer(name){appLayers.unshift({name:name,visible:true});appUpdateLayersList();}
+function appUpdateLayersList(){
+  var el=document.getElementById('appLayersList');el.innerHTML='';
+  if(!appLayers.length){el.innerHTML='<div style="padding:16px 12px;font-size:12px;color:var(--muted);text-align:center;">Hali qatlam yo\'q</div>';return;}
+  appLayers.forEach(function(l,i){
+    var d=document.createElement('div');d.className='app-layer-item'+(i===0?' active':'');
+    d.innerHTML='<span style="font-size:14px;">◼</span><span style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">'+l.name+'</span><span class="app-layer-del" onclick="appRemoveLayer('+i+')">✕</span>';
+    el.appendChild(d);
+  });
+}
+function appRemoveLayer(i){appLayers.splice(i,1);appUpdateLayersList();}
+
+function appDownloadPNG(){
+  var link=document.createElement('a');link.download='logo-master.png';link.href=drawCanvas.toDataURL('image/png');link.click();
+}
+function appDownloadSVG(){
+  var w=drawCanvas.width,h=drawCanvas.height;
+  var img=drawCanvas.toDataURL('image/png');
+  var svg='<svg xmlns="http://www.w3.org/2000/svg" width="'+w+'" height="'+h+'"><image href="'+img+'" width="'+w+'" height="'+h+'"/></svg>';
+  var blob=new Blob([svg],{type:'image/svg+xml'});
+  var url=URL.createObjectURL(blob);
+  var a=document.createElement('a');a.href=url;a.download='logo-master.svg';a.click();URL.revokeObjectURL(url);
+}
+
+function appSetTool(t){
+  appTool=t;
+  document.querySelectorAll('.app-tool-btn').forEach(function(b){b.classList.remove('active');});
+  var el=document.getElementById('appTool'+t.charAt(0).toUpperCase()+t.slice(1));
+  if(el)el.classList.add('active');
+  drawCanvas.style.cursor=t==='eraser'?'cell':t==='fill'?'crosshair':'crosshair';
+}
+
+function getAppPos(e){
+  var r=drawCanvas.getBoundingClientRect();
+  var scaleX=drawCanvas.width/r.width,scaleY=drawCanvas.height/r.height;
+  var cx=e.touches?e.touches[0].clientX:e.clientX;
+  var cy=e.touches?e.touches[0].clientY:e.clientY;
+  return{x:(cx-r.left)*scaleX,y:(cy-r.top)*scaleY};
+}
+
+function appStartDraw(e){
+  appDrawing=true;
+  var p=getAppPos(e);appStartX=p.x;appStartY=p.y;appLastX=p.x;appLastY=p.y;
+  appSetCtxStyle();
+  if(appTool==='fill'){appFloodFill(Math.round(p.x),Math.round(p.y));appDrawing=false;return;}
+  if(['pen','brush','eraser'].indexOf(appTool)!==-1){drawCtx.beginPath();drawCtx.moveTo(p.x,p.y);}
+  else{appSnapshot=drawCtx.getImageData(0,0,drawCanvas.width,drawCanvas.height);}
+}
+function appDraw(e){
+  if(!appDrawing)return;
+  var p=getAppPos(e);appSetCtxStyle();
+  if(appTool==='pen'||appTool==='brush'){
+    drawCtx.globalCompositeOperation='source-over';
+    if(appTool==='brush'){drawCtx.lineWidth=appLineSize*3;drawCtx.globalAlpha=appOpacity*0.5;}
+    drawCtx.lineTo(p.x,p.y);drawCtx.stroke();drawCtx.beginPath();drawCtx.moveTo(p.x,p.y);
+  }else if(appTool==='eraser'){
+    drawCtx.globalCompositeOperation='destination-out';drawCtx.lineWidth=appLineSize*4;
+    drawCtx.lineTo(p.x,p.y);drawCtx.stroke();drawCtx.beginPath();drawCtx.moveTo(p.x,p.y);
+    drawCtx.globalCompositeOperation='source-over';
+  }else{
+    drawCtx.putImageData(appSnapshot,0,0);drawCtx.globalCompositeOperation='source-over';
+    appDrawShape(appTool,appStartX,appStartY,p.x,p.y);
+  }
+  appLastX=p.x;appLastY=p.y;
+}
+function appEndDraw(e){
+  if(!appDrawing)return;appDrawing=false;
+  drawCtx.globalCompositeOperation='source-over';drawCtx.globalAlpha=1;
+  var toolNames={pen:'Qalam',brush:'Mo\'yqalam',line:'Chiziq',rect:'To\'rtburchak',circle:'Aylana',triangle:'Uchburchak',star:'Yulduz',eraser:'O\'chirg\'ich'};
+  if(appTool!=='eraser'&&appTool!=='fill')appAddLayer(toolNames[appTool]||appTool);
+  appSaveSnapshot();
+}
+function appDrawShape(t,x1,y1,x2,y2){
+  appSetCtxStyle();
+  var dx=x2-x1,dy=y2-y1;
+  if(t==='line'){drawCtx.beginPath();drawCtx.moveTo(x1,y1);drawCtx.lineTo(x2,y2);drawCtx.stroke();}
+  else if(t==='rect'){if(appFillEnabled)drawCtx.fillRect(x1,y1,dx,dy);drawCtx.strokeRect(x1,y1,dx,dy);}
+  else if(t==='circle'){var r=Math.sqrt(dx*dx+dy*dy)/2;var cx=(x1+x2)/2,cy=(y1+y2)/2;drawCtx.beginPath();drawCtx.arc(cx,cy,r,0,Math.PI*2);if(appFillEnabled)drawCtx.fill();drawCtx.stroke();}
+  else if(t==='triangle'){drawCtx.beginPath();drawCtx.moveTo(x1+(x2-x1)/2,y1);drawCtx.lineTo(x2,y2);drawCtx.lineTo(x1,y2);drawCtx.closePath();if(appFillEnabled)drawCtx.fill();drawCtx.stroke();}
+  else if(t==='star'){var s=Math.sqrt(dx*dx+dy*dy)/2;drawAppStarShape((x1+x2)/2,(y1+y2)/2,s,5);}
+}
+function appFloodFill(fx,fy){
+  var imgData=drawCtx.getImageData(0,0,drawCanvas.width,drawCanvas.height);
+  var data=imgData.data;var idx=(fy*drawCanvas.width+fx)*4;
+  var tr=data[idx],tg=data[idx+1],tb=data[idx+2];
+  var nr=parseInt(appFillColor.slice(1,3),16),ng=parseInt(appFillColor.slice(3,5),16),nb=parseInt(appFillColor.slice(5,7),16);
+  if(tr===nr&&tg===ng&&tb===nb)return;
+  var stack=[[fx,fy]];
+  while(stack.length){
+    var coord=stack.pop();var px=coord[0],py=coord[1];
+    if(px<0||px>=drawCanvas.width||py<0||py>=drawCanvas.height)continue;
+    var i=(py*drawCanvas.width+px)*4;
+    if(Math.abs(data[i]-tr)>30||Math.abs(data[i+1]-tg)>30||Math.abs(data[i+2]-tb)>30)continue;
+    data[i]=nr;data[i+1]=ng;data[i+2]=nb;data[i+3]=255;
+    stack.push([px+1,py],[px-1,py],[px,py+1],[px,py-1]);
+  }
+  drawCtx.putImageData(imgData,0,0);appAddLayer('To\'ldirish');appSaveSnapshot();
+}
+
+drawCanvas=document.getElementById('drawCanvas');
+drawCanvas.addEventListener('mousedown',appStartDraw);
+drawCanvas.addEventListener('mousemove',appDraw);
+drawCanvas.addEventListener('mouseup',appEndDraw);
+drawCanvas.addEventListener('mouseleave',appEndDraw);
+drawCanvas.addEventListener('touchstart',function(e){e.preventDefault();appStartDraw(e);},{passive:false});
+drawCanvas.addEventListener('touchmove',function(e){e.preventDefault();appDraw(e);},{passive:false});
+drawCanvas.addEventListener('touchend',appEndDraw);
+</script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Logo Master — Professional Logo Design</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --gold:#C9A84C;--gold-light:#E8CC7A;--gold-dark:#8B6914;
+  --black:#0A0A0A;--dark:#111111;--dark2:#1A1A1A;--dark3:#252525;
+  --white:#F5F0E8;--muted:#888;
+  --red:#E05555;--green:#55C788;--blue:#5599E0;--purple:#9B6FE0;
+  --font-display:'Bebas Neue',sans-serif;--font-body:'Manrope',sans-serif;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:var(--font-body);overflow-x:hidden;}
+
+/* ── LANDING NAV ── */
+.landing-nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:20px 60px;
+  background:rgba(10,10,10,0.85);backdrop-filter:blur(12px);
+  border-bottom:0.5px solid rgba(201,168,76,0.15);
+}
+.nav-logo{font-family:var(--font-display);font-size:28px;letter-spacing:3px;color:var(--gold);}
+.nav-logo span{color:var(--white);}
+.nav-links{display:flex;gap:36px;list-style:none;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:13px;font-weight:500;letter-spacing:1px;text-transform:uppercase;transition:color .2s;}
+.nav-links a:hover{color:var(--gold);}
+
+/* ── HERO ─ */
+.hero{
+  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  flex-direction:column;text-align:center;position:relative;padding:120px 40px 80px;overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 50% at 50% 0%,rgba(201,168,76,0.12) 0%,transparent 60%),
+  radial-gradient(ellipse 40% 40% at 80% 80%,rgba(201,168,76,0.05) 0%,transparent 50%);
+}
+.hero-grid{
+  position:absolute;inset:0;
+  background-image:linear-gradient(rgba(201,168,76,0.04) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(201,168,76,0.04) 1px,transparent 1px);
+  background-size:60px 60px;
+  mask-image:radial-gradient(ellipse 80% 60% at 50% 40%,black 30%,transparent 80%);
+}
+.hero-eyebrow{
+  font-size:11px;font-weight:600;letter-spacing:4px;text-transform:uppercase;
+  color:var(--gold);margin-bottom:20px;position:relative;display:flex;align-items:center;gap:12px;
+}
+.hero-eyebrow::before,.hero-eyebrow::after{content:'';width:40px;height:1px;background:var(--gold);opacity:.5;}
+.hero-title{font-family:var(--font-display);font-size:clamp(72px,12vw,160px);line-height:.92;letter-spacing:4px;position:relative;z-index:1;}
+.hero-title .line1{color:var(--white);display:block;}
+.hero-title .line2{color:transparent;-webkit-text-stroke:1.5px var(--gold);display:block;}
+.hero-sub{font-size:16px;font-weight:300;color:var(--muted);max-width:480px;line-height:1.7;margin:28px auto 44px;position:relative;z-index:1;}
+.hero-buttons{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;position:relative;z-index:1;}
+.btn-primary{
+  background:var(--gold);color:var(--black);padding:16px 40px;font-size:13px;font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;border:none;border-radius:2px;cursor:pointer;
+  text-decoration:none;transition:background .2s,transform .15s;
+}
+.btn-primary:hover{background:var(--gold-light);transform:translateY(-2px);}
+.hero-stats{display:flex;gap:60px;justify-content:center;margin-top:80px;position:relative;z-index:1;padding-top:40px;border-top:0.5px solid rgba(255,255,255,0.08);}
+.stat{text-align:center;}
+.stat-num{font-family:var(--font-display);font-size:42px;color:var(--gold);letter-spacing:2px;display:block;}
+.stat-label{font-size:11px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;}
+
+/* ── MARQUEE ── */
+.marquee-wrap{background:var(--gold);overflow:hidden;padding:14px 0;}
+.marquee-track{display:flex;gap:0;animation:marquee 18s linear infinite;white-space:nowrap;}
+.marquee-item{font-family:var(--font-display);font-size:15px;letter-spacing:4px;color:var(--black);padding:0 48px;}
+.marquee-dot{padding:0;opacity:0.4;}
+@keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* ── LANDING SECTIONS ── */
+.landing-section{padding:100px 60px;}
+.section-label{font-size:11px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+.section-title{font-family:var(--font-display);font-size:clamp(40px,5vw,72px);line-height:1;letter-spacing:2px;color:var(--white);margin-bottom:20px;}
+.section-sub{font-size:15px;color:var(--muted);max-width:520px;line-height:1.7;}
+
+/* Services */
+.services{background:var(--dark);}
+.services-head{text-align:center;margin-bottom:64px;}
+.services-head .section-sub{margin:0 auto;}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.06);max-width:1100px;margin:0 auto;}
+.service-card{background:var(--dark);padding:44px 36px;transition:background .25s;cursor:default;position:relative;overflow:hidden;}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold);transform:scaleX(0);transition:transform .3s;}
+.service-card:hover{background:var(--dark2);}
+.service-card:hover::before{transform:scaleX(1);}
+.service-icon{width:48px;height:48px;border:1px solid rgba(201,168,76,0.3);border-radius:4px;display:flex;align-items:center;justify-content:center;margin-bottom:24px;font-size:22px;}
+.service-name{font-family:var(--font-display);font-size:26px;letter-spacing:1px;color:var(--white);margin-bottom:10px;}
+.service-desc{font-size:13px;color:var(--muted);line-height:1.65;}
+.service-price{margin-top:24px;font-size:22px;font-weight:700;color:var(--gold);}
+.service-price span{font-size:13px;font-weight:400;color:var(--muted);}
+
+/* Portfolio */
+.portfolio{background:var(--black);}
+.portfolio-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:48px;flex-wrap:wrap;gap:20px;max-width:1100px;margin:0 auto 48px;}
+.portfolio-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:2px;max-width:1100px;margin:0 auto;}
+.logo-card{
+  aspect-ratio:4/3;background:var(--dark2);display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:12px;position:relative;overflow:hidden;
+  cursor:pointer;transition:transform .3s;
+}
+.logo-card:hover{transform:scale(1.02);z-index:2;}
+.logo-card:hover .logo-overlay{opacity:1;}
+.logo-overlay{
+  position:absolute;inset:0;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.3);
+  opacity:0;transition:opacity .3s;display:flex;align-items:flex-end;padding:16px;
+}
+.logo-tag{font-size:11px;color:var(--gold);letter-spacing:2px;text-transform:uppercase;}
+.logo-card svg{width:80px;height:80px;}
+.logo-wordmark{font-family:var(--font-display);font-size:13px;letter-spacing:3px;color:rgba(255,255,255,0.5);text-transform:uppercase;}
+
+/* Process */
+.process{background:var(--dark);}
+.process-head{text-align:center;margin-bottom:64px;}
+.process-head .section-sub{margin:0 auto;}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0;max-width:1100px;margin:0 auto;position:relative;}
+.step{padding:40px 32px;border-left:1px solid rgba(255,255,255,0.06);position:relative;}
+.step:first-child{border-left:none;}
+.step-num{font-family:var(--font-display);font-size:72px;line-height:1;color:rgba(201,168,76,0.12);margin-bottom:16px;display:block;}
+.step-title{font-family:var(--font-display);font-size:22px;letter-spacing:1px;color:var(--white);margin-bottom:10px;}
+.step-desc{font-size:13px;color:var(--muted);line-height:1.65;}
+
+/* Testimonials */
+.testimonials{background:var(--black);}
+.t-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;max-width:1100px;margin:48px auto 0;}
+.t-card{background:var(--dark2);border:0.5px solid rgba(255,255,255,0.07);padding:36px;border-radius:4px;position:relative;}
+.t-quote{font-size:48px;line-height:1;color:var(--gold);opacity:.4;font-family:Georgia,serif;margin-bottom:16px;}
+.t-text{font-size:14px;color:rgba(245,240,232,0.75);line-height:1.75;margin-bottom:24px;}
+.t-author{display:flex;align-items:center;gap:12px;}
+.t-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--gold-dark),var(--gold));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;color:var(--black);}
+.t-name{font-size:13px;font-weight:600;color:var(--white);}
+.t-role{font-size:11px;color:var(--muted);}
+
+/* CTA */
+.cta-banner{background:var(--gold);padding:80px 60px;text-align:center;}
+.cta-banner .section-title{color:var(--black);}
+.cta-banner .section-sub{color:rgba(0,0,0,0.55);margin:0 auto 36px;}
+.btn-dark{
+  background:var(--black);color:var(--gold);padding:18px 48px;font-size:13px;font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;border:none;border-radius:2px;cursor:pointer;
+  text-decoration:none;transition:background .2s,transform .15s;
+}
+.btn-dark:hover{background:var(--dark2);transform:translateY(-2px);}
+
+/* Footer */
+.landing-footer{
+  background:var(--dark);padding:60px;border-top:0.5px solid rgba(255,255,255,0.06);
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;
+}
+.footer-logo{font-family:var(--font-display);font-size:32px;letter-spacing:4px;color:var(--gold);}
+.footer-logo span{color:var(--white);}
+.footer-links{display:flex;gap:32px;list-style:none;}
+.footer-links a{font-size:12px;color:var(--muted);text-decoration:none;letter-spacing:1px;text-transform:uppercase;transition:color .2s;}
+.footer-links a:hover{color:var(--gold);}
+.footer-copy{font-size:11px;color:rgba(136,136,136,0.5);}
+
+/* Fade-up */
+.fade-up{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease;}
+.fade-up.visible{opacity:1;transform:translateY(0);}
+
+/* Responsive */
+@media(max-width:700px){.landing-nav{padding:16px 24px;}.nav-links{display:none;}.landing-section{padding:60px 24px;}}
+@media(max-width:500px){.hero-stats{gap:24px;flex-wrap:wrap;}.cta-banner{padding:60px 24px;}}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- LANDING PAGE -->
+<!-- ═══════════════════════════════════════ -->
+<div id="landing-page">
+
+  <nav class="landing-nav">
+    <div class="nav-logo">LOGO<span>MASTER</span></div>
+    <ul class="nav-links">
+      <li><a href="#services">Xizmatlar</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#process">Jarayon</a></li>
+      <li><a href="#reviews">Sharhlar</a></li>
+    </ul>
+    <!-- Tugma olib tashlandi -->
+  </nav>
+
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-eyebrow">Professional Logotip Dizayni</div>
+    <h1 class="hero-title">
+      <span class="line1">LOGO</span>
+      <span class="line2">MASTER</span>
+    </h1>
+    <p class="hero-sub">Brendingiz uchun zamonaviy, professional va unutilmas logotiplar yaratamiz. Sizning g'oyangiz — bizning san'atimiz.</p>
+    <div class="hero-buttons">
+      <a href="#services" class="btn-primary">Xizmatlarni ko'rish</a>
+      <!-- Tugma olib tashlandi -->
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num">500+</span><span class="stat-label">Yaratilgan logo</span></div>
+      <div class="stat"><span class="stat-num">8+</span><span class="stat-label">Yillik tajriba</span></div>
+      <div class="stat"><span class="stat-num">98%</span><span class="stat-label">Mijoz mamnunligi</span></div>
+      <div class="stat"><span class="stat-num">50+</span><span class="stat-label">Soha</span></div>
+    </div>
+  </section>
+
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <span class="marquee-item">BRENDING</span><span class="marquee-item marquee-dot">✦</span>
+      <span class="marquee-item">LOGOTIP DIZAYN</span><span class="marquee-item marquee-dot">✦</span>
+      <span class="marquee-item">KORPORATIV IDENTIFIKATSIYA</span><span class="marquee-item marquee-dot">✦</span>
+      <span class="marquee-item">VEKTORAL GRAFIKA</span><span class="marquee-item marquee-dot">✦</span>
+      <span class="marquee-item">BRENDBOOK</span><span class="marquee-item marquee-dot">✦</span>
+      <span class="marquee-item">BRENDING</span><span class="marquee-item marquee-dot">✦</span>
+      <span class="marquee-item">LOGOTIP DIZAYN</span><span class="marquee-item marquee-dot">✦</span>
+      <span class="marquee-item">KORPORATIV IDENTIFIKATSIYA</span><span class="marquee-item marquee-dot">✦</span>
+      <span class="marquee-item">VEKTORAL GRAFIKA</span><span class="marquee-item marquee-dot">✦</span>
+      <span class="marquee-item">BRENDBOOK</span><span class="marquee-item marquee-dot">✦</span>
+    </div>
+  </div>
+
+  <section class="landing-section services" id="services">
+    <div class="services-head fade-up">
+      <div class="section-label">Xizmatlarimiz</div>
+      <h2 class="section-title">Nima taklif qilamiz</h2>
+      <p class="section-sub">Har bir xizmatimiz sizning brendingizni raqobatchilardan ajratib turishga mo'ljallangan.</p>
+    </div>
+    <div class="services-grid fade-up">
+      <div class="service-card">
+        <div class="service-icon">◈</div>
+        <div class="service-name">Minimal Logo</div>
+        <p class="service-desc">Zamonaviy va sof dizayn. Kichik korxonalar va individual brendlar uchun ideal tanlov.</p>
+        <div class="service-price">$99 <span>dan boshlab</span></div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">⬡</div>
+        <div class="service-name">Korporativ Logo</div>
+        <p class="service-desc">Professional kompaniyalar uchun to'liq korporativ uslub va logotip paketi.</p>
+        <div class="service-price">$249 <span>dan boshlab</span></div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">◉</div>
+        <div class="service-name">Premium Brend</div>
+        <p class="service-desc">To'liq brendbook: logotip, ranglar, shriftlar, vizitka, letterhead va barcha brandinglar.</p>
+        <div class="service-price">$499 <span>dan boshlab</span></div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">✦</div>
+        <div class="service-name">Qayta Dizayn</div>
+        <p class="service-desc">Mavjud logotipingizni yangilang va zamonaviy ko'rinish bering, biroq identifikatsiyani saqlang.</p>
+        <div class="service-price">$149 <span>dan boshlab</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="landing-section portfolio" id="portfolio">
+    <div class="portfolio-head fade-up">
+      <div>
+        <div class="section-label">Ishlarimiz</div>
+        <h2 class="section-title">Portfolio</h2>
+      </div>
+      <p style="font-size:14px;color:var(--muted);max-width:300px;line-height:1.65;">Turli sohalardagi mijozlarimiz uchun yaratilgan logotiplar.</p>
+    </div>
+    <div class="portfolio-grid fade-up">
+      <div class="logo-card">
+        <svg viewBox="0 0 80 80" fill="none"><polygon points="40,8 72,62 8,62" stroke="#C9A84C" stroke-width="2" fill="none"/><polygon points="40,20 62,56 18,56" fill="rgba(201,168,76,0.15)"/><circle cx="40" cy="40" r="8" fill="#C9A84C"/></svg>
+        <span class="logo-wordmark">APEX</span>
+        <div class="logo-overlay"><span class="logo-tag">IT Kompaniya</span></div>
+      </div>
+      <div class="logo-card" style="background:#0D1117;">
+        <svg viewBox="0 0 80 80" fill="none"><rect x="15" y="15" width="22" height="22" fill="#C9A84C"/><rect x="43" y="15" width="22" height="22" fill="none" stroke="#C9A84C" stroke-width="1.5"/><rect x="15" y="43" width="22" height="22" fill="none" stroke="#C9A84C" stroke-width="1.5"/><rect x="43" y="43" width="22" height="22" fill="rgba(201,168,76,0.3)"/></svg>
+        <span class="logo-wordmark">GRID CO</span>
+        <div class="logo-overlay"><span class="logo-tag">Arxitektura</span></div>
+      </div>
+      <div class="logo-card" style="background:#0A0F1E;">
+        <svg viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="28" stroke="#C9A84C" stroke-width="1.5" stroke-dasharray="4 3"/><circle cx="40" cy="40" r="16" fill="none" stroke="#C9A84C" stroke-width="2"/><circle cx="40" cy="40" r="5" fill="#C9A84C"/><line x1="40" y1="12" x2="40" y2="24" stroke="#C9A84C" stroke-width="1.5"/><line x1="40" y1="56" x2="40" y2="68" stroke="#C9A84C" stroke-width="1.5"/></svg>
+        <span class="logo-wordmark">ORBIT</span>
+        <div class="logo-overlay"><span class="logo-tag">Texnologiya</span></div>
+      </div>
+      <div class="logo-card" style="background:#0F0D0A;">
+        <svg viewBox="0 0 80 80" fill="none"><path d="M20 60 L40 15 L60 60" stroke="#C9A84C" stroke-width="2.5" stroke-linejoin="round"/><path d="M27 45 L53 45" stroke="#C9A84C" stroke-width="1.5"/><circle cx="40" cy="15" r="4" fill="#C9A84C"/></svg>
+        <span class="logo-wordmark">ALTURA</span>
+        <div class="logo-overlay"><span class="logo-tag">Restoran</span></div>
+      </div>
+      <div class="logo-card" style="background:#100A14;">
+        <svg viewBox="0 0 80 80" fill="none"><path d="M40 12 C40 12 18 28 18 46 C18 57 28 66 40 66 C52 66 62 57 62 46 C62 28 40 12 40 12Z" stroke="#C9A84C" stroke-width="1.5" fill="rgba(201,168,76,0.08)"/><path d="M40 26 C40 26 28 36 28 46 C28 52 33 57 40 57 C47 57 52 52 52 46 C52 36 40 26 40 26Z" fill="rgba(201,168,76,0.2)"/><circle cx="40" cy="46" r="6" fill="#C9A84C"/></svg>
+        <span class="logo-wordmark">DROPZ</span>
+        <div class="logo-overlay"><span class="logo-tag">Suv brendlari</span></div>
+      </div>
+      <div class="logo-card" style="background:#0A100A;">
+        <svg viewBox="0 0 80 80" fill="none"><rect x="12" y="30" width="56" height="34" rx="4" stroke="#C9A84C" stroke-width="1.5" fill="none"/><path d="M26 30 L26 22 C26 18 30 14 40 14 C50 14 54 18 54 22 L54 30" stroke="#C9A84C" stroke-width="1.5"/><circle cx="40" cy="47" r="6" fill="#C9A84C"/><line x1="40" y1="53" x2="40" y2="58" stroke="#C9A84C" stroke-width="1.5"/></svg>
+        <span class="logo-wordmark">VAULTX</span>
+        <div class="logo-overlay"><span class="logo-tag">Moliya</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="landing-section process" id="process">
+    <div class="process-head fade-up">
+      <div class="section-label">Ish jarayoni</div>
+      <h2 class="section-title">Qanday ishlashimiz</h2>
+      <p class="section-sub">Oddiy, tezkor va shaffof ish jarayoni — natija doim belgilangan muddatda.</p>
+    </div>
+    <div class="steps fade-up">
+      <div class="step"><span class="step-num">01</span><div class="step-title">Muloqot</div><p class="step-desc">Sizning biznesingiz, maqsadlaringiz va raqobatchilaringiz haqida batafsil suhbat o'tkazamiz.</p></div>
+      <div class="step"><span class="step-num">02</span><div class="step-title">Kontseptsiya</div><p class="step-desc">3 xil yo'nalishda eskizlar yaratib, sizga taqdim qilamiz. Eng yoqqanini tanlaysiz.</p></div>
+      <div class="step"><span class="step-num">03</span><div class="step-title">Dizayn</div><p class="step-desc">Tanlangan kontseptsiyani raqamli formatda professional darajada yakunlaymiz.</p></div>
+      <div class="step"><span class="step-num">04</span><div class="step-title">Topshirish</div><p class="step-desc">Barcha formatda (AI, SVG, PNG, PDF) fayllari va brandbook bilan birga topshiramiz.</p></div>
+    </div>
+  </section>
+
+  <section class="landing-section testimonials" id="reviews">
+    <div class="fade-up" style="text-align:center;">
+      <div class="section-label">Mijozlar fikri</div>
+      <h2 class="section-title">Ular nima dedi</h2>
+    </div>
+    <div class="t-grid fade-up">
+      <div class="t-card">
+        <div class="t-quote">"</div>
+        <p class="t-text">Logo Master jamoasi biz kutgandan ham yaxshi narsani yaratdi. Bizning brendimiz endi chindan ham professional ko'rinadi.</p>
+        <div class="t-author"><div class="t-avatar">AK</div><div><div class="t-name">Alisher Karimov</div><div class="t-role">TechStart.uz — CEO</div></div></div>
+      </div>
+      <div class="t-card">
+        <div class="t-quote">"</div>
+        <p class="t-text">3 kun ichida 3 ta kontseptsiya, 2 ta o'zgartirishdan keyin mukammal logotip tayyorlandi. Tez va sifatli ish uchun katta rahmat!</p>
+        <div class="t-author"><div class="t-avatar">SM</div><div><div class="t-name">Sarvinoy Mirzayeva</div><div class="t-role">Cafe Gusto — Owner</div></div></div>
+      </div>
+      <div class="t-card">
+        <div class="t-quote">"</div>
+        <p class="t-text">Narxi ham qulay, sifati ham ajoyib. Bizning kompaniyamiz uchun to'liq brendbook tayyorlab berishdi.</p>
+        <div class="t-author"><div class="t-avatar">BT</div><div><div class="t-name">Bobur Toshmatov</div><div class="t-role">BuildPro — Marketing Dir.</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-banner fade-up" id="contact">
+    <div class="section-label" style="color:rgba(0,0,0,0.45);">Hoziroq boshlang</div>
+    <h2 class="section-title">Brendingizni Yarating</h2>
+    <p class="section-sub">Logotipingizga muhtojmisiz? Biz bilan bog'laning — birinchi maslahat bepul!</p>
+    <!-- Tugma olib tashlandi -->
+  </div>
+
+  <footer class="landing-footer">
+    <div class="footer-logo">LOGO<span>MASTER</span></div>
+    <ul class="footer-links">
+      <li><a href="#services">Xizmatlar</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#process">Jarayon</a></li>
+      <li><a href="#reviews">Sharhlar</a></li>
+    </ul>
+    <div class="footer-copy">© 2025 LogoMaster. Barcha huquqlar himoyalangan.</div>
+  </footer>
+</div>
+
+<script>
+// ── LANDING ANIMATIONS ──
+(function(){
+  var obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});
+  },{threshold:0.12});
+  document.querySelectorAll('.fade-up').forEach(function(el){obs.observe(el);});
+})();
+</script>
+</body>
+</html>
